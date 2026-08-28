@@ -14,34 +14,279 @@
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Custom Aesthetic Styles -->
-  <link rel="stylesheet" href="aries.css">
+  <style>
+    /* ===== CUSTOM AESTHETIC STYLES (inline for completeness) ===== */
+    body {
+      background: #06060e;
+      color: #f1f5f9;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    .font-display {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    /* ambient glow */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+    .ambient-purple {
+      width: 40vw;
+      height: 40vw;
+      top: -10%;
+      left: -10%;
+      background: #7c3aed;
+    }
+    .ambient-cyan {
+      width: 35vw;
+      height: 35vw;
+      bottom: -5%;
+      right: -5%;
+      background: #06b6d4;
+    }
+    .ambient-pink {
+      width: 30vw;
+      height: 30vw;
+      top: 40%;
+      left: 50%;
+      background: #ec4899;
+    }
+
+    /* bg-grid */
+    .bg-grid-pattern {
+      background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+      background-size: 40px 40px;
+    }
+    .bg-radial-gradient {
+      background: radial-gradient(circle at 30% 40%, rgba(124, 58, 237, 0.08) 0%, transparent 60%);
+    }
+
+    /* navbar */
+    #navbar {
+      background: rgba(9, 11, 29, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      color: white;
+      box-shadow: 0 8px 24px -6px rgba(124, 58, 237, 0.3);
+      transition: all 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: scale(1.02);
+      box-shadow: 0 12px 32px -8px rgba(124, 58, 237, 0.5);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #cbd5e1;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.15);
+      color: white;
+    }
+
+    /* section tag */
+    .section-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #a78bfa;
+      background: rgba(124, 58, 237, 0.12);
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(124, 58, 237, 0.15);
+    }
+
+    /* philosophy-word (gradient text) */
+    .philosophy-word {
+      background: linear-gradient(135deg, #a78bfa, #60a5fa, #f472b6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #a78bfa, #60a5fa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .text-gradient-violet {
+      background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* cards */
+    .spotlight-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+    }
+    .spotlight-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(124, 58, 237, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+    }
+
+    .icon-box-glow {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 0.75rem;
+      background: rgba(124, 58, 237, 0.08);
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #a78bfa;
+      font-size: 1.1rem;
+    }
+
+    .stat-watermark {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.03);
+      position: absolute;
+      right: 1rem;
+      top: 0.5rem;
+      line-height: 1;
+      pointer-events: none;
+      font-family: 'Segoe UI', monospace;
+    }
+
+    .tech-tag {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      color: #94a3b8;
+      font-family: monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .form-input-glass {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 0.75rem;
+      color: #f1f5f9;
+      font-size: 0.9rem;
+      transition: border 0.2s;
+      outline: none;
+    }
+    .form-input-glass:focus {
+      border-color: #7c3aed;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .pulse-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #a78bfa;
+      border-radius: 50%;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    .pulse-dot-purple {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #7c3aed;
+      border-radius: 50%;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0% { opacity: 0.4; transform: scale(0.9); }
+      50% { opacity: 1; transform: scale(1.2); }
+      100% { opacity: 0.4; transform: scale(0.9); }
+    }
+
+    /* mobile menu */
+    #mobile-menu {
+      background: rgba(6, 6, 14, 0.96);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+    }
+
+    /* tab buttons */
+    .tab-btn {
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      background: transparent;
+      color: #94a3b8;
+      border: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: rgba(124, 58, 237, 0.2);
+      color: #c4b5fd;
+    }
+    .tab-btn:hover {
+      color: #e2e8f0;
+    }
+
+    /* particles canvas */
+    #particles-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* fix for sticky header */
+    .section {
+      scroll-margin-top: 6rem;
+    }
+  </style>
 </head>
 
-<body class="bg-[#06060e] text-[#f1f5f9] min-h-screen relative selection:bg-purple-500/30 selection:text-white">
+<body>
 
   <!-- ===== AMBIENT GLOW AURAS ===== -->
   <div class="ambient-glow ambient-purple"></div>
   <div class="ambient-glow ambient-cyan"></div>
   <div class="ambient-glow ambient-pink"></div>
 
-  <!-- ===== FLOATING NAVBAR ===== -->
-  <header class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-5 transition-all duration-300"
-    id="navbar-container">
+  <!-- ===== HEADER / NAVBAR (FULL WIDTH, STICKY) ===== -->
+  <header id="navbar-container" class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 bg-transparent">
     <nav id="navbar"
-      class="w-full max-w-6xl py-3.5 px-6 rounded-2xl flex items-center justify-between transition-all duration-300 border border-white/[0.08] bg-[#090b1d]/75 backdrop-blur-xl shadow-2xl shadow-purple-950/20">
-
-      <!-- Brand Logo -->
-      <a href="#home" class="flex items-center gap-3 group">
+      class="w-full max-w-full mx-auto py-3.5 px-4 md:px-6 lg:px-8 flex items-center justify-between transition-all duration-300 border-b border-white/[0.06] bg-[#090b1d]/80 backdrop-blur-xl shadow-2xl shadow-purple-950/20">
+      
+      <!-- Brand -->
+      <a href="#home" class="flex items-center gap-3 group shrink-0">
         <div
           class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-purple-600/30 group-hover:scale-105 transition-transform">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
             stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
           </svg>
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col leading-tight">
           <div class="flex items-center gap-1.5">
             <span class="text-xl font-extrabold tracking-wider text-white font-display">ARISE</span>
             <span
@@ -51,19 +296,19 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
+      <!-- Desktop Nav -->
       <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#home" class="nav-link hover:text-white transition-colors">Home</a>
-        <a href="#what-we-do" class="nav-link hover:text-white transition-colors">What We Do</a>
-        <a href="#about" class="nav-link hover:text-white transition-colors">About</a>
-        <a href="#events" class="nav-link hover:text-white transition-colors">Events</a>
-        <a href="#projects" class="nav-link hover:text-white transition-colors">Projects</a>
-        <a href="#team" class="nav-link hover:text-white transition-colors">Team</a>
-        <a href="#resources" class="nav-link hover:text-white transition-colors">Resources</a>
-        <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
+        <a href="#home" class="hover:text-white transition-colors">Home</a>
+        <a href="#what-we-do" class="hover:text-white transition-colors">What We Do</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#events" class="hover:text-white transition-colors">Events</a>
+        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+        <a href="#team" class="hover:text-white transition-colors">Team</a>
+        <a href="#resources" class="hover:text-white transition-colors">Resources</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
       </div>
 
-      <!-- Action Button -->
+      <!-- Actions -->
       <div class="hidden md:flex items-center gap-3">
         <a href="#join"
           class="btn-primary px-5 py-2 rounded-full text-xs font-bold tracking-wide uppercase flex items-center gap-2">
@@ -72,7 +317,7 @@
         </a>
       </div>
 
-      <!-- Mobile Hamburger Button -->
+      <!-- Hamburger -->
       <button id="hamburger" class="lg:hidden text-slate-300 hover:text-white text-xl p-2 focus:outline-none"
         aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
@@ -80,7 +325,7 @@
     </nav>
   </header>
 
-  <!-- ===== MOBILE MENU DRAWER ===== -->
+  <!-- ===== MOBILE MENU ===== -->
   <div id="mobile-menu"
     class="fixed inset-0 bg-[#06060e]/95 backdrop-blur-2xl z-50 flex flex-col items-center justify-center gap-6 text-xl font-medium text-slate-200 transition-all duration-300 -translate-y-full opacity-0 pointer-events-none">
     <div class="flex items-center gap-2 mb-4">
@@ -88,1792 +333,386 @@
       <span
         class="text-xs font-bold font-mono uppercase px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">SSGMCE</span>
     </div>
-    <a href="#home" class="hover:philosophy-word transition">Home</a>
-    <a href="#what-we-do" class="hover:philosophy-word transition">What We Do</a>
-    <a href="#about" class="hover:philosophy-word transition">About</a>
-    <a href="#events" class="hover:philosophy-word transition">Events</a>
-    <a href="#projects" class="hover:philosophy-word transition">Projects</a>
-    <a href="#team" class="hover:philosophy-word transition">Team</a>
-    <a href="#resources" class="hover:philosophy-word transition">Resources</a>
-    <a href="#contact" class="hover:philosophy-word transition">Contact</a>
-    <a href="#join" class="btn-primary px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider mt-4">Join
-      Community</a>
+    <a href="#home" class="hover:text-purple-400 transition">Home</a>
+    <a href="#what-we-do" class="hover:text-purple-400 transition">What We Do</a>
+    <a href="#about" class="hover:text-purple-400 transition">About</a>
+    <a href="#events" class="hover:text-purple-400 transition">Events</a>
+    <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
+    <a href="#team" class="hover:text-purple-400 transition">Team</a>
+    <a href="#resources" class="hover:text-purple-400 transition">Resources</a>
+    <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
+    <a href="#join" class="btn-primary px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider mt-4">Join Community</a>
     <button id="close-menu" class="absolute top-6 right-6 text-2xl text-slate-400 hover:text-white p-2">
       <i class="fas fa-times"></i>
     </button>
   </div>
 
-  <!-- ===== HERO SECTION ===== -->
-  <section id="home" class="min-h-screen relative flex items-center overflow-hidden pt-28 pb-20">
-    <!-- Interactive Canvas & Grid -->
-    <canvas id="particles-canvas"></canvas>
+  <!-- ===== HERO SECTION (FULL WIDTH) ===== -->
+  <section id="home" class="min-h-screen w-full relative flex items-center overflow-hidden pt-28 pb-20">
+    <canvas id="particles-canvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
     <div class="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none"></div>
     <div class="absolute inset-0 bg-radial-gradient pointer-events-none"></div>
 
+    <div class="w-full max-w-[1500px] mx-auto px-4 md:px-6 lg:px-8 relative z-10 flex items-center justify-center min-h-[80vh]">
+      <div class="max-w-7xl w-full mx-auto text-center flex flex-col items-center justify-center gap-7">
+        <!-- Status Pill -->
+        <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full bg-purple-500/10 border border-purple-500/25 text-purple-300 text-sm font-semibold tracking-wider uppercase shadow-lg shadow-purple-500/10">
+          <span class="pulse-dot"></span>
+          <span>Official AI &amp; Research Collective · SSGMCE</span>
+        </div>
 
-    <div class="w-full max-w-[1500px] mx-auto px-4 md:px-6 lg:px-8 pt-0 pb-8 relative z-10
-  min-h-screen flex items-center justify-center -translate-y-8">
-
-      <!-- Center Content -->
-      <div class="max-w-7xl w-full mx-auto text-center
-    flex flex-col items-center justify-center
-    gap-7">
-
-        <!-- Status Pill
-          <div class="inline-flex items-center gap-2.5 px-5 py-2 rounded-full
-        bg-purple-500/10 border border-purple-500/25
-        text-purple-300 text-sm font-semibold tracking-wider uppercase
-        shadow-lg shadow-purple-500/10">
-
-            <span class="pulse-dot"></span>
-
-            <span>Official AI &amp; Research Collective · SSGMCE</span>
-
-          </div> -->
-
-
-        <!-- Main Title -->
-        <h1 class="text-5xl md:text-7xl lg:text-8xl
-      font-extrabold tracking-tight text-white
-      font-display leading-none">
-
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-white font-display leading-none">
           WELCOME TO
           <span class="philosophy-word">ARIES.</span>
-
         </h1>
 
-
-        <!-- Official Club Subtitle -->
-        <p class="text-lg md:text-2xl
-      font-semibold tracking-wider uppercase text-slate-400">
-
+        <p class="text-lg md:text-2xl font-semibold tracking-wider uppercase text-slate-400">
           The Official AI Club of
           <span class="philosophy-word">SSGMCE</span>
-
         </p>
 
-
-        <!-- Definition Quote Card -->
-        <div class="w-full max-w-6xl px-7 py-5 rounded-2xl
-      bg-white/[0.03] border border-white/[0.06]
-      border-l-4 border-l-purple-500
-      backdrop-blur-md">
-
-          <p class="text-slate-300 text-base md:text-lg
-        italic leading-relaxed">"The first spark of innovation, characterised by absolute curiosity
-            and immense ambition. The ARIES mind strives for prominence in every
-            project it undertakes."
-
-          </p>
-
+        <div class="w-full max-w-6xl px-7 py-5 rounded-2xl bg-white/[0.03] border border-white/[0.06] border-l-4 border-l-purple-500 backdrop-blur-md">
+          <p class="text-slate-300 text-base md:text-lg italic leading-relaxed">"The first spark of innovation, characterised by absolute curiosity
+            and immense ambition. The ARIES mind strives for prominence in every project it undertakes."</p>
         </div>
 
-
-        <!-- Philosophy Mantra -->
-        <div class="flex flex-wrap justify-center items-center
-      gap-3 text-3xl md:text-4xl
-      font-bold font-display">
-
+        <div class="flex flex-wrap justify-center items-center gap-3 text-3xl md:text-4xl font-bold font-display">
           <span class="philosophy-word">Research.</span>
-
           <span class="philosophy-word">Build.</span>
-
           <span class="philosophy-word">Deploy.</span>
-
           <span class="philosophy-word">Impact.</span>
-
         </div>
 
-
-        <!-- Description -->
-        <p class="max-w-5xl text-slate-300
-      text-lg md:text-xl
-      leading-relaxed font-light">
+        <p class="max-w-5xl text-slate-300 text-lg md:text-xl leading-relaxed font-light">
           ARISE is an emerging student-led initiative with a vision to build a strong AI community at SSGMCE. We bring
           together curious students, builders, researchers, and innovators to learn, experiment, collaborate, and create
-          meaningful impact.
-
-          ARISE is not just about today — it's about what we build for tomorrow.
-
+          meaningful impact. ARISE is not just about today — it's about what we build for tomorrow.
         </p>
 
-
-        <!-- CTA Buttons -->
-        <div class="flex flex-wrap justify-center items-center
-      gap-5">
-
-          <!-- Explore Events Button -->
-          <a href="#events" class="btn-primary px-9 py-4 rounded-full
-        text-base font-bold tracking-wide
-        flex items-center gap-2.5">
-
+        <div class="flex flex-wrap justify-center items-center gap-5">
+          <a href="#events" class="btn-primary px-9 py-4 rounded-full text-base font-bold tracking-wide flex items-center gap-2.5">
             <span>Explore Events</span>
-
             <i class="fas fa-arrow-right text-sm"></i>
-
           </a>
-
-
-          <!-- Learn More Button -->
-          <a href="#about" class="px-6 py-4 rounded-full
-        text-sm font-semibold text-slate-400
-        hover:text-white transition">
-
-            Learn More
-
-            <i class="fas fa-chevron-down ml-1 text-xs"></i>
-
+          <a href="#about" class="px-6 py-4 rounded-full text-sm font-semibold text-slate-400 hover:text-white transition">
+            Learn More <i class="fas fa-chevron-down ml-1 text-xs"></i>
           </a>
-
         </div>
-
       </div>
-
-    </div>
-
-    <!-- Stats Counter Strip
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-white/[0.08] max-w-2xl">
-          <div>
-            <div class="text-2xl md:text-3xl font-extrabold text-white font-display">500+</div>
-            <div class="text-xs text-slate-400 mt-0.5">Active Members</div>
-          </div>
-          <div>
-            <div class="text-2xl md:text-3xl font-extrabold philosophy-word font-display">25+</div>
-            <div class="text-xs text-slate-400 mt-0.5">AI Projects</div>
-          </div>
-          <div>
-            <div class="text-2xl md:text-3xl font-extrabold text-cyan-400 font-display">15+</div>
-            <div class="text-xs text-slate-400 mt-0.5">Hackathons &amp; Events</div>
-          </div>
-          <div>
-            <div class="text-2xl md:text-3xl font-extrabold text-indigo-300 font-display">100%</div>
-            <div class="text-xs text-slate-400 mt-0.5">Student-Driven</div>
-          </div>
-        </div> -->
-
-    </div>
     </div>
   </section>
 
-  <!-- ===== WHAT WE DO SECTION (BENTO GRID) ===== -->
-  <!-- ===== WHAT'S AHEAD SECTION ===== -->
+  <!-- ===== REST OF SECTIONS (unchanged, but keep spacing) ===== -->
+  <!-- What's Ahead -->
   <section id="events" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06]">
-
     <div class="container mx-auto max-w-6xl">
-
-      <!-- Section Heading -->
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-
         <div>
-
-          <!-- Section Tag -->
-          <span class="section-tag mb-3">
-            The Journey Begins
-          </span>
-
-          <!-- Main Heading -->
-          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
-
-            What's <span class="text-gradient">Ahead</span>
-
-          </h2>
-
-          <!-- Subtitle -->
-          <p class="text-slate-400 text-sm md:text-base mt-3 max-w-xl">
-
-            The journey is just beginning. Here's what we aim to create.
-
-          </p>
-
+          <span class="section-tag mb-3">The Journey Begins</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">What's <span class="text-gradient">Ahead</span></h2>
+          <p class="text-slate-400 text-sm md:text-base mt-3 max-w-xl">The journey is just beginning. Here's what we aim to create.</p>
         </div>
-
-
-        <!-- Future Status -->
-        <div class="text-xs font-mono text-slate-400 px-4 py-2 rounded-xl
-        bg-white/[0.03] border border-white/[0.06]
-        flex items-center gap-2">
-
+        <div class="text-xs font-mono text-slate-400 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center gap-2">
           <span class="pulse-dot-purple"></span>
-
           <span>STATUS: COMING SOON</span>
-
         </div>
-
       </div>
-
-
-      <!-- Future Activities Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-
-        <!-- ========================================= -->
-        <!-- CARD 1 — AI WORKSHOPS -->
-        <!-- ========================================= -->
-
-        <div class="spotlight-card rounded-3xl overflow-hidden group
-        transition-all duration-300">
-
-
-          <!-- Card Visual -->
-          <div class="h-48 relative overflow-hidden
-          bg-gradient-to-tr from-purple-900/60 via-indigo-900/40 to-slate-900
-          flex items-center justify-center p-6">
-
-            <!-- Background Grid -->
-            <div class="absolute inset-0 bg-grid-pattern opacity-40">
-            </div>
-
-
-            <!-- Icon -->
-            <div class="w-16 h-16 rounded-2xl
-            bg-purple-500/20 border border-purple-500/40
-            flex items-center justify-center
-            text-purple-300 text-2xl
-            shadow-xl backdrop-blur-md
-            group-hover:scale-110 transition-transform">
-
+        <!-- card 1 -->
+        <div class="spotlight-card rounded-3xl overflow-hidden group transition-all duration-300">
+          <div class="h-48 relative overflow-hidden bg-gradient-to-tr from-purple-900/60 via-indigo-900/40 to-slate-900 flex items-center justify-center p-6">
+            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+            <div class="w-16 h-16 rounded-2xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform">
               <i class="fas fa-brain"></i>
-
             </div>
-
-
-            <!-- Category Badge -->
-            <div class="absolute top-4 left-4">
-
-              <span class="text-[11px] font-mono font-bold uppercase
-              px-3 py-1 rounded-full
-              bg-purple-500/20 text-purple-300
-              border border-purple-500/30 backdrop-blur-md">
-
-                Learning
-
-              </span>
-
-            </div>
-
-
-            <!-- Status Badge -->
-            <div class="absolute top-4 right-4">
-
-              <span class="text-[11px] font-mono font-bold uppercase
-              px-3 py-1 rounded-full
-              bg-purple-500/10 text-purple-300
-              border border-purple-500/30 backdrop-blur-md">
-
-                PLANNED
-
-              </span>
-
-            </div>
-
+            <div class="absolute top-4 left-4"><span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 backdrop-blur-md">Learning</span></div>
+            <div class="absolute top-4 right-4"><span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/30 backdrop-blur-md">PLANNED</span></div>
           </div>
-
-
-          <!-- Card Content -->
           <div class="p-6">
-
-            <h3 class="text-xl font-bold text-white font-display
-            group-hover:text-purple-300 transition-colors">
-
-              AI Workshops
-
-            </h3>
-
-
-            <p class="text-slate-400 text-sm mt-3 leading-relaxed">
-
-              Hands-on learning sessions designed to introduce students
-              to modern Artificial Intelligence, machine learning,
-              generative AI, and emerging technologies.
-
-            </p>
-
-
-            <!-- Bottom -->
-            <div class="mt-5 pt-4 border-t border-white/[0.06]
-            flex items-center justify-between">
-
-              <span class="text-xs text-slate-400">
-
-                <i class="fas fa-lightbulb
-                philosophy-word mr-1.5">
-                </i>
-
-                Learn & Explore
-
-              </span>
-
-
-              <span class="text-xs font-bold philosophy-word
-              flex items-center gap-1">
-
-                Coming Soon
-
-                <i class="fas fa-arrow-right
-                text-[10px]">
-                </i>
-
-              </span>
-
+            <h3 class="text-xl font-bold text-white font-display group-hover:text-purple-300 transition-colors">AI Workshops</h3>
+            <p class="text-slate-400 text-sm mt-3 leading-relaxed">Hands-on learning sessions designed to introduce students to modern Artificial Intelligence, machine learning, generative AI, and emerging technologies.</p>
+            <div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+              <span class="text-xs text-slate-400"><i class="fas fa-lightbulb philosophy-word mr-1.5"></i> Learn & Explore</span>
+              <span class="text-xs font-bold philosophy-word flex items-center gap-1">Coming Soon <i class="fas fa-arrow-right text-[10px]"></i></span>
             </div>
-
           </div>
-
         </div>
-
-
-
-        <!-- ========================================= -->
-        <!-- CARD 2 — HACKATHONS -->
-        <!-- ========================================= -->
-
-        <div class="spotlight-card rounded-3xl overflow-hidden group
-        transition-all duration-300">
-
-
-          <!-- Card Visual -->
-          <div class="h-48 relative overflow-hidden
-          bg-gradient-to-tr from-cyan-900/60 via-blue-900/40 to-slate-900
-          flex items-center justify-center p-6">
-
-
-            <!-- Background Grid -->
-            <div class="absolute inset-0 bg-grid-pattern opacity-40">
-            </div>
-
-
-            <!-- Icon -->
-            <div class="w-16 h-16 rounded-2xl
-            bg-cyan-500/20 border border-cyan-500/40
-            flex items-center justify-center
-            text-cyan-300 text-2xl
-            shadow-xl backdrop-blur-md
-            group-hover:scale-110 transition-transform">
-
+        <!-- card 2 -->
+        <div class="spotlight-card rounded-3xl overflow-hidden group transition-all duration-300">
+          <div class="h-48 relative overflow-hidden bg-gradient-to-tr from-cyan-900/60 via-blue-900/40 to-slate-900 flex items-center justify-center p-6">
+            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+            <div class="w-16 h-16 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform">
               <i class="fas fa-laptop-code"></i>
-
             </div>
-
-
-            <!-- Category Badge -->
-            <div class="absolute top-4 left-4">
-
-              <span class="text-[11px] font-mono font-bold uppercase
-              px-3 py-1 rounded-full
-              bg-cyan-500/20 text-cyan-300
-              border border-cyan-500/30 backdrop-blur-md">
-
-                Building
-
-              </span>
-
-            </div>
-
-
-            <!-- Status Badge -->
-            <div class="absolute top-4 right-4">
-
-              <span class="text-[11px] font-mono font-bold uppercase
-              px-3 py-1 rounded-full
-              bg-cyan-500/10 text-cyan-300
-              border border-cyan-500/30 backdrop-blur-md">
-
-                FUTURE
-
-              </span>
-
-            </div>
-
+            <div class="absolute top-4 left-4"><span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-md">Building</span></div>
+            <div class="absolute top-4 right-4"><span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 backdrop-blur-md">FUTURE</span></div>
           </div>
-
-
-          <!-- Card Content -->
           <div class="p-6">
-
-            <h3 class="text-xl font-bold text-white font-display
-            group-hover:text-cyan-300 transition-colors">
-
-              Hackathons & Build Challenges
-
-            </h3>
-
-
-            <p class="text-slate-400 text-sm mt-3 leading-relaxed">
-
-              Future build challenges where students can collaborate,
-              experiment with ideas, and use technology to solve
-              real-world problems.
-
-            </p>
-
-
-            <!-- Bottom -->
-            <div class="mt-5 pt-4 border-t border-white/[0.06]
-            flex items-center justify-between">
-
-              <span class="text-xs text-slate-400">
-
-                <i class="fas fa-code
-                text-cyan-400 mr-1.5">
-                </i>
-
-                Build & Collaborate
-
-              </span>
-
-
-              <span class="text-xs font-bold text-cyan-400
-              flex items-center gap-1">
-
-                In The Vision
-
-                <i class="fas fa-arrow-right
-                text-[10px]">
-                </i>
-
-              </span>
-
+            <h3 class="text-xl font-bold text-white font-display group-hover:text-cyan-300 transition-colors">Hackathons & Build Challenges</h3>
+            <p class="text-slate-400 text-sm mt-3 leading-relaxed">Future build challenges where students can collaborate, experiment with ideas, and use technology to solve real-world problems.</p>
+            <div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+              <span class="text-xs text-slate-400"><i class="fas fa-code text-cyan-400 mr-1.5"></i> Build & Collaborate</span>
+              <span class="text-xs font-bold text-cyan-400 flex items-center gap-1">In The Vision <i class="fas fa-arrow-right text-[10px]"></i></span>
             </div>
-
           </div>
-
         </div>
-
-
-
-        <!-- ========================================= -->
-        <!-- CARD 3 — RESEARCH SESSIONS -->
-        <!-- ========================================= -->
-
-        <div class="spotlight-card rounded-3xl overflow-hidden group
-        transition-all duration-300">
-
-
-          <!-- Card Visual -->
-          <div class="h-48 relative overflow-hidden
-          bg-gradient-to-tr from-pink-900/60 via-purple-900/40 to-slate-900
-          flex items-center justify-center p-6">
-
-
-            <!-- Background Grid -->
-            <div class="absolute inset-0 bg-grid-pattern opacity-40">
-            </div>
-
-
-            <!-- Icon -->
-            <div class="w-16 h-16 rounded-2xl
-            bg-pink-500/20 border border-pink-500/40
-            flex items-center justify-center
-            text-pink-300 text-2xl
-            shadow-xl backdrop-blur-md
-            group-hover:scale-110 transition-transform">
-
+        <!-- card 3 -->
+        <div class="spotlight-card rounded-3xl overflow-hidden group transition-all duration-300">
+          <div class="h-48 relative overflow-hidden bg-gradient-to-tr from-pink-900/60 via-purple-900/40 to-slate-900 flex items-center justify-center p-6">
+            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+            <div class="w-16 h-16 rounded-2xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform">
               <i class="fas fa-microscope"></i>
-
             </div>
-
-
-            <!-- Category Badge -->
-            <div class="absolute top-4 left-4">
-
-              <span class="text-[11px] font-mono font-bold uppercase
-              px-3 py-1 rounded-full
-              bg-pink-500/20 text-pink-300
-              border border-pink-500/30 backdrop-blur-md">
-
-                Research
-
-              </span>
-
-            </div>
-
-
-            <!-- Status Badge -->
-            <div class="absolute top-4 right-4">
-
-              <span class="text-[11px] font-mono font-bold uppercase
-              px-3 py-1 rounded-full
-              bg-pink-500/10 text-pink-300
-              border border-pink-500/30 backdrop-blur-md">
-
-                PLANNED
-
-              </span>
-
-            </div>
-
+            <div class="absolute top-4 left-4"><span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30 backdrop-blur-md">Research</span></div>
+            <div class="absolute top-4 right-4"><span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-pink-500/10 text-pink-300 border border-pink-500/30 backdrop-blur-md">PLANNED</span></div>
           </div>
-
-
-          <!-- Card Content -->
           <div class="p-6">
-
-            <h3 class="text-xl font-bold text-white font-display
-            group-hover:text-pink-300 transition-colors">
-
-              Research Sessions
-
-            </h3>
-
-
-            <p class="text-slate-400 text-sm mt-3 leading-relaxed">
-
-              Discussions, paper reading groups, idea exploration,
-              and experimentation with emerging Artificial Intelligence
-              technologies.
-
-            </p>
-
-
-            <!-- Bottom -->
-            <div class="mt-5 pt-4 border-t border-white/[0.06]
-            flex items-center justify-between">
-
-              <span class="text-xs text-slate-400">
-
-                <i class="fas fa-book-open
-                text-pink-400 mr-1.5">
-                </i>
-
-                Explore & Discover
-
-              </span>
-
-
-              <span class="text-xs font-bold text-pink-400
-              flex items-center gap-1">
-
-                Coming Soon
-
-                <i class="fas fa-arrow-right
-                text-[10px]">
-                </i>
-
-              </span>
-
+            <h3 class="text-xl font-bold text-white font-display group-hover:text-pink-300 transition-colors">Research Sessions</h3>
+            <p class="text-slate-400 text-sm mt-3 leading-relaxed">Discussions, paper reading groups, idea exploration, and experimentation with emerging Artificial Intelligence technologies.</p>
+            <div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+              <span class="text-xs text-slate-400"><i class="fas fa-book-open text-pink-400 mr-1.5"></i> Explore & Discover</span>
+              <span class="text-xs font-bold text-pink-400 flex items-center gap-1">Coming Soon <i class="fas fa-arrow-right text-[10px]"></i></span>
             </div>
-
           </div>
-
         </div>
-
-
       </div>
-
-
-      <!-- Bottom Future Message -->
-
       <div class="text-center mt-12">
-
-        <p class="text-slate-400 text-sm md:text-base
-        max-w-2xl mx-auto leading-relaxed">
-
-          ARISE is just getting started. These are some of the experiences
-          and opportunities we hope to build together as the community grows.
-
-        </p>
-
-
-        <a href="#join" class="btn-secondary px-8 py-3 rounded-full
-        text-xs font-bold uppercase tracking-wider
-        inline-flex items-center gap-2 mt-6">
-
+        <p class="text-slate-400 text-sm md:text-base max-w-2xl mx-auto leading-relaxed">ARISE is just getting started. These are some of the experiences and opportunities we hope to build together as the community grows.</p>
+        <a href="#join" class="btn-secondary px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 mt-6">
           <span>Be Part of the Beginning</span>
-
           <i class="fas fa-arrow-right text-[10px]"></i>
-
         </a>
-
       </div>
-
-
     </div>
-
   </section>
 
-  <!-- ===== ABOUT / FOUR PILLARS SECTION ===== -->
+  <!-- About / Four Pillars -->
   <section id="about" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06]">
     <div class="container mx-auto max-w-6xl">
-
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span class="section-tag mb-3">Our Identity</span>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
-          What is <span class="text-gradient">ARISE?</span>
-        </h2>
-        <p class="text-slate-300 text-base md:text-lg mt-4 leading-relaxed font-light">
-          ARISE is the official Artificial Intelligence club of SSGMCE, built by students who are passionate about
-          technology, innovation, and creating real-world impact. We believe that the future belongs to those who are
-          curious enough to explore, brave enough to experiment, and determined enough to build.
-        </p>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">What is <span class="text-gradient">ARISE?</span></h2>
+        <p class="text-slate-300 text-base md:text-lg mt-4 leading-relaxed font-light">ARISE is the official Artificial Intelligence club of SSGMCE, built by students who are passionate about technology, innovation, and creating real-world impact. We believe that the future belongs to those who are curious enough to explore, brave enough to experiment, and determined enough to build.</p>
       </div>
-
-      <!-- 4 Pillars Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- Pillar 1 -->
         <div class="spotlight-card p-7 rounded-3xl relative flex flex-col justify-between">
-          <div>
-            <div class="stat-watermark mb-2">01</div>
-            <div class="icon-box-glow mb-4">
-              <i class="fas fa-flask"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white font-display mb-2">Research</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Explore emerging technologies, foundation models, and novel machine learning techniques to push
-              boundaries.
-            </p>
-          </div>
-          <div
-            class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono philosophy-word flex items-center justify-between">
-            <span>EXPLORATION</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
+          <div><div class="stat-watermark mb-2">01</div><div class="icon-box-glow mb-4"><i class="fas fa-flask"></i></div><h3 class="text-xl font-bold text-white font-display mb-2">Research</h3><p class="text-slate-400 text-sm leading-relaxed">Explore emerging technologies, foundation models, and novel machine learning techniques to push boundaries.</p></div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono philosophy-word flex items-center justify-between"><span>EXPLORATION</span><i class="fas fa-arrow-right"></i></div>
         </div>
-
-        <!-- Pillar 2 -->
         <div class="spotlight-card p-7 rounded-3xl relative flex flex-col justify-between">
-          <div>
-            <div class="stat-watermark mb-2">02</div>
-            <div class="icon-box-glow mb-4">
-              <i class="fas fa-code"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white font-display mb-2">Build</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Transform theoretical mathematical concepts and raw ideas into functional, production-ready software
-              solutions.
-            </p>
-          </div>
-          <div
-            class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-cyan-400 flex items-center justify-between">
-            <span>ENGINEERING</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
+          <div><div class="stat-watermark mb-2">02</div><div class="icon-box-glow mb-4"><i class="fas fa-code"></i></div><h3 class="text-xl font-bold text-white font-display mb-2">Build</h3><p class="text-slate-400 text-sm leading-relaxed">Transform theoretical mathematical concepts and raw ideas into functional, production-ready software solutions.</p></div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-cyan-400 flex items-center justify-between"><span>ENGINEERING</span><i class="fas fa-arrow-right"></i></div>
         </div>
-
-        <!-- Pillar 3 -->
         <div class="spotlight-card p-7 rounded-3xl relative flex flex-col justify-between">
-          <div>
-            <div class="stat-watermark mb-2">03</div>
-            <div class="icon-box-glow mb-4">
-              <i class="fas fa-rocket"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white font-display mb-2">Deploy</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Take solutions beyond the classroom into cloud servers, mobile edges, and real environments with live
-              users.
-            </p>
-          </div>
-          <div
-            class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-indigo-400 flex items-center justify-between">
-            <span>PRODUCTION</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
+          <div><div class="stat-watermark mb-2">03</div><div class="icon-box-glow mb-4"><i class="fas fa-rocket"></i></div><h3 class="text-xl font-bold text-white font-display mb-2">Deploy</h3><p class="text-slate-400 text-sm leading-relaxed">Take solutions beyond the classroom into cloud servers, mobile edges, and real environments with live users.</p></div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-indigo-400 flex items-center justify-between"><span>PRODUCTION</span><i class="fas fa-arrow-right"></i></div>
         </div>
-
-        <!-- Pillar 4 -->
         <div class="spotlight-card p-7 rounded-3xl relative flex flex-col justify-between">
-          <div>
-            <div class="stat-watermark mb-2">04</div>
-            <div class="icon-box-glow mb-4">
-              <i class="fas fa-bullseye"></i>
-            </div>
-            <h3 class="text-xl font-bold text-white font-display mb-2">Impact</h3>
-            <p class="text-slate-400 text-sm leading-relaxed">
-              Create ethical, accessible technology that solves real societal, agricultural, and industrial challenges.
-            </p>
-          </div>
-          <div
-            class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-pink-400 flex items-center justify-between">
-            <span>SOCIETY</span>
-            <i class="fas fa-arrow-right"></i>
-          </div>
+          <div><div class="stat-watermark mb-2">04</div><div class="icon-box-glow mb-4"><i class="fas fa-bullseye"></i></div><h3 class="text-xl font-bold text-white font-display mb-2">Impact</h3><p class="text-slate-400 text-sm leading-relaxed">Create ethical, accessible technology that solves real societal, agricultural, and industrial challenges.</p></div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-pink-400 flex items-center justify-between"><span>SOCIETY</span><i class="fas fa-arrow-right"></i></div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ===== VISION & MISSION SECTION ===== -->
+  <!-- Vision & Mission -->
   <section class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06] bg-[#070818]/60">
     <div class="container mx-auto max-w-6xl">
-
       <div class="text-center max-w-3xl mx-auto mb-14">
         <span class="section-tag mb-3">Guiding Principles</span>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
-          Vision &amp; <span class="text-gradient-violet">Mission</span>
-        </h2>
-        <p class="text-purple-300 text-lg md:text-xl font-light italic mt-3">
-          "Of the Students, For the Students and By the Students"
-        </p>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">Vision &amp; <span class="text-gradient-violet">Mission</span></h2>
+        <p class="text-purple-300 text-lg md:text-xl font-light italic mt-3">"Of the Students, For the Students and By the Students"</p>
       </div>
-
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6">
-          <span class="text-4xl font-extrabold font-display text-purple-500/40">01</span>
-          <div>
-            <h3 class="text-lg font-bold text-white font-display mb-1">Product-Based Mindset</h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Build a world-class coding culture and instill problem-solving habits required for success in high-caliber
-              product engineering firms.
-            </p>
-          </div>
-        </div>
-
-        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6">
-          <span class="text-4xl font-extrabold font-display text-purple-500/40">02</span>
-          <div>
-            <h3 class="text-lg font-bold text-white font-display mb-1">Ignite Innovation</h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Equip students with cutting-edge tools, GPUs, datasets, and frameworks needed to transform ideas into
-              tangible breakthroughs.
-            </p>
-          </div>
-        </div>
-
-        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6">
-          <span class="text-4xl font-extrabold font-display text-purple-500/40">03</span>
-          <div>
-            <h3 class="text-lg font-bold text-white font-display mb-1">Collaborative Ecosystem</h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Foster radical curiosity and cross-disciplinary experimentation in an open, inclusive, and supportive
-              peer-to-peer environment.
-            </p>
-          </div>
-        </div>
-
-        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6">
-          <span class="text-4xl font-extrabold font-display text-purple-500/40">04</span>
-          <div>
-            <h3 class="text-lg font-bold text-white font-display mb-1">Eliminate Phobia</h3>
-            <p class="text-slate-300 text-sm leading-relaxed">
-              Demystify machine learning and coding anxiety through hands-on bootcamps, structured roadmaps, and
-              dedicated 1-on-1 peer mentorship.
-            </p>
-          </div>
-        </div>
-
+        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6"><span class="text-4xl font-extrabold font-display text-purple-500/40">01</span><div><h3 class="text-lg font-bold text-white font-display mb-1">Product-Based Mindset</h3><p class="text-slate-300 text-sm leading-relaxed">Build a world-class coding culture and instill problem-solving habits required for success in high-caliber product engineering firms.</p></div></div>
+        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6"><span class="text-4xl font-extrabold font-display text-purple-500/40">02</span><div><h3 class="text-lg font-bold text-white font-display mb-1">Ignite Innovation</h3><p class="text-slate-300 text-sm leading-relaxed">Equip students with cutting-edge tools, GPUs, datasets, and frameworks needed to transform ideas into tangible breakthroughs.</p></div></div>
+        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6"><span class="text-4xl font-extrabold font-display text-purple-500/40">03</span><div><h3 class="text-lg font-bold text-white font-display mb-1">Collaborative Ecosystem</h3><p class="text-slate-300 text-sm leading-relaxed">Foster radical curiosity and cross-disciplinary experimentation in an open, inclusive, and supportive peer-to-peer environment.</p></div></div>
+        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6"><span class="text-4xl font-extrabold font-display text-purple-500/40">04</span><div><h3 class="text-lg font-bold text-white font-display mb-1">Eliminate Phobia</h3><p class="text-slate-300 text-sm leading-relaxed">Demystify machine learning and coding anxiety through hands-on bootcamps, structured roadmaps, and dedicated 1-on-1 peer mentorship.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== EVENTS & EXPERIENCES SECTION ===== -->
+  <!-- Events & Experiences (filter) -->
   <section id="events" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06]">
     <div class="container mx-auto max-w-6xl">
-
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-        <div>
-          <span class="section-tag mb-3">Community Gatherings</span>
-          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
-            Events &amp; <span class="text-gradient">Experiences</span>
-          </h2>
-          <p class="text-slate-400 text-sm md:text-base mt-2">Learn. Compete. Build. Connect.</p>
-        </div>
-
-        <!-- Filter Tabs -->
-        <div
-          class="flex items-center gap-2 p-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] overflow-x-auto">
+        <div><span class="section-tag mb-3">Community Gatherings</span><h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">Events &amp; <span class="text-gradient">Experiences</span></h2><p class="text-slate-400 text-sm md:text-base mt-2">Learn. Compete. Build. Connect.</p></div>
+        <div class="flex items-center gap-2 p-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] overflow-x-auto">
           <button class="tab-btn event-tab-btn active" data-filter="all">All Events</button>
           <button class="tab-btn event-tab-btn" data-filter="workshop">Workshops</button>
           <button class="tab-btn event-tab-btn" data-filter="hackathon">Hackathons</button>
           <button class="tab-btn event-tab-btn" data-filter="summit">Summits</button>
         </div>
       </div>
-
-      <!-- Events Grid -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="events-grid">
-
-        <!-- Event Card 1 -->
-        <div class="spotlight-card event-card-item rounded-3xl overflow-hidden group transition-all duration-300"
-          data-category="workshop">
-          <div
-            class="h-48 relative overflow-hidden bg-gradient-to-tr from-purple-900/60 via-indigo-900/40 to-slate-900 flex items-center justify-center p-6">
-            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
-            <div
-              class="w-16 h-16 rounded-2xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform">
-              <i class="fas fa-brain"></i>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span
-                class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 backdrop-blur-md">Workshop</span>
-            </div>
-            <div class="absolute top-4 right-4">
-              <span
-                class="text-[11px] font-mono text-slate-300 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">Mar
-                15, 2026</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-white font-display group-hover:text-purple-300 transition-colors">
-              Mastering Generative AI &amp; LLMs</h3>
-            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
-              Hands-on deep dive into fine-tuning open-source LLMs, RAG architectures, and multi-agent workflows.
-            </p>
-            <div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-              <span class="text-xs text-slate-400"><i class="fas fa-map-marker-alt philosophy-word mr-1.5"></i> SSGMCE
-                Lab 4</span>
-              <a href="#contact"
-                class="text-xs font-bold philosophy-word hover:text-purple-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Register</span> <i class="fas fa-arrow-right text-[10px]"></i>
-              </a>
-            </div>
-          </div>
+        <div class="spotlight-card event-card-item rounded-3xl overflow-hidden group transition-all duration-300" data-category="workshop">
+          <div class="h-48 relative overflow-hidden bg-gradient-to-tr from-purple-900/60 via-indigo-900/40 to-slate-900 flex items-center justify-center p-6"><div class="absolute inset-0 bg-grid-pattern opacity-40"></div><div class="w-16 h-16 rounded-2xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform"><i class="fas fa-brain"></i></div><div class="absolute top-4 left-4"><span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 backdrop-blur-md">Workshop</span></div><div class="absolute top-4 right-4"><span class="text-[11px] font-mono text-slate-300 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">Mar 15, 2026</span></div></div>
+          <div class="p-6"><h3 class="text-xl font-bold text-white font-display group-hover:text-purple-300 transition-colors">Mastering Generative AI &amp; LLMs</h3><p class="text-slate-400 text-sm mt-2 leading-relaxed">Hands-on deep dive into fine-tuning open-source LLMs, RAG architectures, and multi-agent workflows.</p><div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between"><span class="text-xs text-slate-400"><i class="fas fa-map-marker-alt philosophy-word mr-1.5"></i> SSGMCE Lab 4</span><a href="#contact" class="text-xs font-bold philosophy-word hover:text-purple-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform"><span>Register</span> <i class="fas fa-arrow-right text-[10px]"></i></a></div></div>
         </div>
-
-        <!-- Event Card 2 -->
-        <div class="spotlight-card event-card-item rounded-3xl overflow-hidden group transition-all duration-300"
-          data-category="hackathon">
-          <div
-            class="h-48 relative overflow-hidden bg-gradient-to-tr from-cyan-900/60 via-blue-900/40 to-slate-900 flex items-center justify-center p-6">
-            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
-            <div
-              class="w-16 h-16 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span
-                class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-md">Hackathon</span>
-            </div>
-            <div class="absolute top-4 right-4">
-              <span
-                class="text-[11px] font-mono text-slate-300 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">Apr
-                02, 2026</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-white font-display group-hover:text-cyan-300 transition-colors">ARISE
-              HackSprint 2026</h3>
-            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
-              24-hour non-stop AI hackathon solving real-world challenges with exciting prizes and industry mentorship.
-            </p>
-            <div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-              <span class="text-xs text-slate-400"><i class="fas fa-trophy text-yellow-400 mr-1.5"></i> Prize Pool
-                ₹50k</span>
-              <a href="#contact"
-                class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                <span>View Details</span> <i class="fas fa-arrow-right text-[10px]"></i>
-              </a>
-            </div>
-          </div>
+        <div class="spotlight-card event-card-item rounded-3xl overflow-hidden group transition-all duration-300" data-category="hackathon">
+          <div class="h-48 relative overflow-hidden bg-gradient-to-tr from-cyan-900/60 via-blue-900/40 to-slate-900 flex items-center justify-center p-6"><div class="absolute inset-0 bg-grid-pattern opacity-40"></div><div class="w-16 h-16 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform"><i class="fas fa-laptop-code"></i></div><div class="absolute top-4 left-4"><span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-md">Hackathon</span></div><div class="absolute top-4 right-4"><span class="text-[11px] font-mono text-slate-300 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">Apr 02, 2026</span></div></div>
+          <div class="p-6"><h3 class="text-xl font-bold text-white font-display group-hover:text-cyan-300 transition-colors">ARISE HackSprint 2026</h3><p class="text-slate-400 text-sm mt-2 leading-relaxed">24-hour non-stop AI hackathon solving real-world challenges with exciting prizes and industry mentorship.</p><div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between"><span class="text-xs text-slate-400"><i class="fas fa-trophy text-yellow-400 mr-1.5"></i> Prize Pool ₹50k</span><a href="#contact" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform"><span>View Details</span> <i class="fas fa-arrow-right text-[10px]"></i></a></div></div>
         </div>
-
-        <!-- Event Card 3 -->
-        <div class="spotlight-card event-card-item rounded-3xl overflow-hidden group transition-all duration-300"
-          data-category="summit">
-          <div
-            class="h-48 relative overflow-hidden bg-gradient-to-tr from-pink-900/60 via-purple-900/40 to-slate-900 flex items-center justify-center p-6">
-            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
-            <div
-              class="w-16 h-16 rounded-2xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform">
-              <i class="fas fa-scroll"></i>
-            </div>
-            <div class="absolute top-4 left-4">
-              <span
-                class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30 backdrop-blur-md">Summit</span>
-            </div>
-            <div class="absolute top-4 right-4">
-              <span
-                class="text-[11px] font-mono text-slate-300 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">May
-                10, 2026</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-white font-display group-hover:text-pink-300 transition-colors">Annual AI
-              Research Summit</h3>
-            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
-              Showcasing student-authored research papers, keynotes by visiting researchers, and project demos.
-            </p>
-            <div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-              <span class="text-xs text-slate-400"><i class="fas fa-microphone text-pink-400 mr-1.5"></i>
-                Auditorium</span>
-              <a href="#contact"
-                class="text-xs font-bold text-pink-400 hover:text-pink-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                <span>Attend</span> <i class="fas fa-arrow-right text-[10px]"></i>
-              </a>
-            </div>
-          </div>
+        <div class="spotlight-card event-card-item rounded-3xl overflow-hidden group transition-all duration-300" data-category="summit">
+          <div class="h-48 relative overflow-hidden bg-gradient-to-tr from-pink-900/60 via-purple-900/40 to-slate-900 flex items-center justify-center p-6"><div class="absolute inset-0 bg-grid-pattern opacity-40"></div><div class="w-16 h-16 rounded-2xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform"><i class="fas fa-scroll"></i></div><div class="absolute top-4 left-4"><span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30 backdrop-blur-md">Summit</span></div><div class="absolute top-4 right-4"><span class="text-[11px] font-mono text-slate-300 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">May 10, 2026</span></div></div>
+          <div class="p-6"><h3 class="text-xl font-bold text-white font-display group-hover:text-pink-300 transition-colors">Annual AI Research Summit</h3><p class="text-slate-400 text-sm mt-2 leading-relaxed">Showcasing student-authored research papers, keynotes by visiting researchers, and project demos.</p><div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between"><span class="text-xs text-slate-400"><i class="fas fa-microphone text-pink-400 mr-1.5"></i> Auditorium</span><a href="#contact" class="text-xs font-bold text-pink-400 hover:text-pink-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform"><span>Attend</span> <i class="fas fa-arrow-right text-[10px]"></i></a></div></div>
         </div>
-
       </div>
-
-      <div class="text-center mt-12">
-        <a href="#contact"
-          class="btn-secondary px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2">
-          <span>Propose a Workshop or Speaker Session</span>
-          <i class="fas fa-paper-plane text-[10px]"></i>
-        </a>
-      </div>
-
+      <div class="text-center mt-12"><a href="#contact" class="btn-secondary px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2"><span>Propose a Workshop or Speaker Session</span><i class="fas fa-paper-plane text-[10px]"></i></a></div>
     </div>
   </section>
 
-  <!-- ===== PROJECTS SECTION ===== -->
-  <!-- ===== FUTURE PROJECTS SECTION ===== -->
+  <!-- Future Projects -->
   <section id="projects" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06] bg-[#070818]/60">
-
     <div class="container mx-auto max-w-6xl">
-
-
-      <!-- ===== SECTION HEADING ===== -->
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-
-        <div>
-
-          <!-- Section Tag -->
-          <span class="section-tag mb-3">
-            Ideas Into Impact
-          </span>
-
-
-          <!-- Main Heading -->
-          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
-
-            Future <span class="text-gradient-violet">Projects</span>
-
-          </h2>
-
-
-          <!-- Subtitle -->
-          <p class="text-slate-400 text-sm md:text-base mt-3 max-w-xl">
-
-            Ideas waiting to become reality. These are some of the
-            challenges and projects we aim to explore as ARISE grows.
-
-          </p>
-
-        </div>
-
-
-        <!-- Future Status -->
-        <div class="text-xs font-mono text-slate-400 px-4 py-2 rounded-xl
-        bg-white/[0.03] border border-white/[0.06]
-        flex items-center gap-2">
-
-          <span class="pulse-dot-purple"></span>
-
-          <span>STATUS: IDEAS IN DEVELOPMENT</span>
-
-        </div>
-
+        <div><span class="section-tag mb-3">Ideas Into Impact</span><h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">Future <span class="text-gradient-violet">Projects</span></h2><p class="text-slate-400 text-sm md:text-base mt-3 max-w-xl">Ideas waiting to become reality. These are some of the challenges and projects we aim to explore as ARISE grows.</p></div>
+        <div class="text-xs font-mono text-slate-400 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center gap-2"><span class="pulse-dot-purple"></span><span>STATUS: IDEAS IN DEVELOPMENT</span></div>
       </div>
-
-
-
-      <!-- ===== PROJECTS GRID ===== -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-
-
-        <!-- ===================================== -->
-        <!-- PROJECT 1 — AI FOR AGRICULTURE -->
-        <!-- ===================================== -->
-
-        <div class="spotlight-card p-6 rounded-3xl relative
-        flex flex-col justify-between group">
-
-
-          <div>
-
-
-            <!-- Project Visual -->
-            <div class="h-40 rounded-2xl
-            bg-gradient-to-br from-purple-900/40 to-slate-900/80
-            border border-white/[0.08]
-            relative overflow-hidden
-            flex items-center justify-center
-            p-4 mb-5">
-
-              <div class="absolute inset-0 bg-grid-pattern opacity-30">
-              </div>
-
-
-              <div class="text-center relative z-10">
-
-                <i class="fas fa-seedling
-                text-4xl philosophy-word mb-2">
-                </i>
-
-                <div class="text-xs font-mono text-purple-300">
-
-                  AI + AGRICULTURE
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-
-            <!-- Title + Status -->
-            <div class="flex items-center justify-between gap-3 mb-2">
-
-              <h3 class="text-xl font-bold text-white font-display
-              group-hover:text-purple-300 transition-colors">
-
-                AI for Agriculture
-
-              </h3>
-
-
-              <span class="text-[10px] font-mono px-2 py-0.5
-              rounded-full bg-purple-500/10
-              philosophy-word
-              border border-purple-500/20">
-
-                CONCEPT
-
-              </span>
-
-            </div>
-
-
-
-            <!-- Technology / Idea Tags -->
-            <div class="flex flex-wrap gap-1.5 my-3">
-
-              <span class="tech-tag text-[10px]">
-                Computer Vision
-              </span>
-
-              <span class="tech-tag text-[10px]">
-                Machine Learning
-              </span>
-
-              <span class="tech-tag text-[10px]">
-                Data
-              </span>
-
-            </div>
-
-
-
-            <!-- Description -->
-            <p class="text-slate-400 text-sm leading-relaxed">
-
-              Exploring how Artificial Intelligence could help address
-              agricultural challenges through crop analysis, disease
-              detection, prediction, and intelligent decision support.
-
-            </p>
-
-
-          </div>
-
-
-
-          <!-- Bottom -->
-          <div class="mt-6 pt-4 border-t border-white/[0.06]
-          flex items-center justify-between">
-
-            <span class="text-xs text-slate-400
-            flex items-center gap-1.5 font-mono">
-
-              <i class="fas fa-lightbulb
-              philosophy-word">
-              </i>
-
-              IDEA STAGE
-
-            </span>
-
-
-            <span class="text-xs philosophy-word
-            flex items-center gap-1.5 font-mono">
-
-              FUTURE BUILD
-
-              <i class="fas fa-arrow-right
-              text-[10px]">
-              </i>
-
-            </span>
-
-          </div>
-
-
+        <div class="spotlight-card p-6 rounded-3xl relative flex flex-col justify-between group">
+          <div><div class="h-40 rounded-2xl bg-gradient-to-br from-purple-900/40 to-slate-900/80 border border-white/[0.08] relative overflow-hidden flex items-center justify-center p-4 mb-5"><div class="absolute inset-0 bg-grid-pattern opacity-30"></div><div class="text-center relative z-10"><i class="fas fa-seedling text-4xl philosophy-word mb-2"></i><div class="text-xs font-mono text-purple-300">AI + AGRICULTURE</div></div></div><div class="flex items-center justify-between gap-3 mb-2"><h3 class="text-xl font-bold text-white font-display group-hover:text-purple-300 transition-colors">AI for Agriculture</h3><span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-500/10 philosophy-word border border-purple-500/20">CONCEPT</span></div><div class="flex flex-wrap gap-1.5 my-3"><span class="tech-tag text-[10px]">Computer Vision</span><span class="tech-tag text-[10px]">Machine Learning</span><span class="tech-tag text-[10px]">Data</span></div><p class="text-slate-400 text-sm leading-relaxed">Exploring how Artificial Intelligence could help address agricultural challenges through crop analysis, disease detection, prediction, and intelligent decision support.</p></div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between"><span class="text-xs text-slate-400 flex items-center gap-1.5 font-mono"><i class="fas fa-lightbulb philosophy-word"></i> IDEA STAGE</span><span class="text-xs philosophy-word flex items-center gap-1.5 font-mono">FUTURE BUILD <i class="fas fa-arrow-right text-[10px]"></i></span></div>
         </div>
-
-
-
-        <!-- ===================================== -->
-        <!-- PROJECT 2 — STUDENT AI TOOLS -->
-        <!-- ===================================== -->
-
-        <div class="spotlight-card p-6 rounded-3xl relative
-        flex flex-col justify-between group">
-
-
-          <div>
-
-
-            <!-- Project Visual -->
-            <div class="h-40 rounded-2xl
-            bg-gradient-to-br from-pink-900/40 to-slate-900/80
-            border border-white/[0.08]
-            relative overflow-hidden
-            flex items-center justify-center
-            p-4 mb-5">
-
-              <div class="absolute inset-0 bg-grid-pattern opacity-30">
-              </div>
-
-
-              <div class="text-center relative z-10">
-
-                <i class="fas fa-wand-magic-sparkles
-                text-4xl text-pink-400 mb-2">
-                </i>
-
-                <div class="text-xs font-mono text-pink-300">
-
-                  AI FOR STUDENTS
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-
-            <!-- Title + Status -->
-            <div class="flex items-center justify-between gap-3 mb-2">
-
-              <h3 class="text-xl font-bold text-white font-display
-              group-hover:text-pink-300 transition-colors">
-
-                Student AI Tools
-
-              </h3>
-
-
-              <span class="text-[10px] font-mono px-2 py-0.5
-              rounded-full bg-pink-500/10
-              text-pink-400
-              border border-pink-500/20">
-
-                IDEA
-
-              </span>
-
-            </div>
-
-
-
-            <!-- Technology / Idea Tags -->
-            <div class="flex flex-wrap gap-1.5 my-3">
-
-              <span class="tech-tag text-[10px]">
-                Generative AI
-              </span>
-
-              <span class="tech-tag text-[10px]">
-                LLMs
-              </span>
-
-              <span class="tech-tag text-[10px]">
-                Automation
-              </span>
-
-            </div>
-
-
-
-            <!-- Description -->
-            <p class="text-slate-400 text-sm leading-relaxed">
-
-              Exploring useful AI-powered tools that could help students
-              learn, organize information, improve productivity, and
-              experiment with modern technology.
-
-            </p>
-
-
-          </div>
-
-
-
-          <!-- Bottom -->
-          <div class="mt-6 pt-4 border-t border-white/[0.06]
-          flex items-center justify-between">
-
-            <span class="text-xs text-slate-400
-            flex items-center gap-1.5 font-mono">
-
-              <i class="fas fa-lightbulb
-              text-pink-400">
-              </i>
-
-              EXPLORING
-
-            </span>
-
-
-            <span class="text-xs text-pink-400
-            flex items-center gap-1.5 font-mono">
-
-              COMING LATER
-
-              <i class="fas fa-arrow-right
-              text-[10px]">
-              </i>
-
-            </span>
-
-          </div>
-
-
+        <div class="spotlight-card p-6 rounded-3xl relative flex flex-col justify-between group">
+          <div><div class="h-40 rounded-2xl bg-gradient-to-br from-pink-900/40 to-slate-900/80 border border-white/[0.08] relative overflow-hidden flex items-center justify-center p-4 mb-5"><div class="absolute inset-0 bg-grid-pattern opacity-30"></div><div class="text-center relative z-10"><i class="fas fa-wand-magic-sparkles text-4xl text-pink-400 mb-2"></i><div class="text-xs font-mono text-pink-300">AI FOR STUDENTS</div></div></div><div class="flex items-center justify-between gap-3 mb-2"><h3 class="text-xl font-bold text-white font-display group-hover:text-pink-300 transition-colors">Student AI Tools</h3><span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20">IDEA</span></div><div class="flex flex-wrap gap-1.5 my-3"><span class="tech-tag text-[10px]">Generative AI</span><span class="tech-tag text-[10px]">LLMs</span><span class="tech-tag text-[10px]">Automation</span></div><p class="text-slate-400 text-sm leading-relaxed">Exploring useful AI-powered tools that could help students learn, organize information, improve productivity, and experiment with modern technology.</p></div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between"><span class="text-xs text-slate-400 flex items-center gap-1.5 font-mono"><i class="fas fa-lightbulb text-pink-400"></i> EXPLORING</span><span class="text-xs text-pink-400 flex items-center gap-1.5 font-mono">COMING LATER <i class="fas fa-arrow-right text-[10px]"></i></span></div>
         </div>
-
-
-
-        <!-- ===================================== -->
-        <!-- PROJECT 3 — COMPUTER VISION -->
-        <!-- ===================================== -->
-
-        <div class="spotlight-card p-6 rounded-3xl relative
-        flex flex-col justify-between group">
-
-
-          <div>
-
-
-            <!-- Project Visual -->
-            <div class="h-40 rounded-2xl
-            bg-gradient-to-br from-cyan-900/40 to-slate-900/80
-            border border-white/[0.08]
-            relative overflow-hidden
-            flex items-center justify-center
-            p-4 mb-5">
-
-              <div class="absolute inset-0 bg-grid-pattern opacity-30">
-              </div>
-
-
-              <div class="text-center relative z-10">
-
-                <i class="fas fa-eye
-                text-4xl text-cyan-400 mb-2">
-                </i>
-
-                <div class="text-xs font-mono text-cyan-300">
-
-                  COMPUTER VISION
-
-                </div>
-
-              </div>
-
-            </div>
-
-
-
-            <!-- Title + Status -->
-            <div class="flex items-center justify-between gap-3 mb-2">
-
-              <h3 class="text-xl font-bold text-white font-display
-              group-hover:text-cyan-300 transition-colors">
-
-                Vision & Intelligence
-
-              </h3>
-
-
-              <span class="text-[10px] font-mono px-2 py-0.5
-              rounded-full bg-cyan-500/10
-              text-cyan-400
-              border border-cyan-500/20">
-
-                FUTURE
-
-              </span>
-
-            </div>
-
-
-
-            <!-- Technology / Idea Tags -->
-            <div class="flex flex-wrap gap-1.5 my-3">
-
-              <span class="tech-tag text-[10px]">
-                Computer Vision
-              </span>
-
-              <span class="tech-tag text-[10px]">
-                Deep Learning
-              </span>
-
-              <span class="tech-tag text-[10px]">
-                Robotics
-              </span>
-
-            </div>
-
-
-
-            <!-- Description -->
-            <p class="text-slate-400 text-sm leading-relaxed">
-
-              Exploring future applications of computer vision and
-              machine learning for intelligent systems, automation,
-              robotics, and real-world problem solving.
-
-            </p>
-
-
-          </div>
-
-
-
-          <!-- Bottom -->
-          <div class="mt-6 pt-4 border-t border-white/[0.06]
-          flex items-center justify-between">
-
-            <span class="text-xs text-slate-400
-            flex items-center gap-1.5 font-mono">
-
-              <i class="fas fa-compass
-              text-cyan-400">
-              </i>
-
-              FUTURE DIRECTION
-
-            </span>
-
-
-            <span class="text-xs text-cyan-400
-            flex items-center gap-1.5 font-mono">
-
-              TO EXPLORE
-
-              <i class="fas fa-arrow-right
-              text-[10px]">
-              </i>
-
-            </span>
-
-          </div>
-
-
+        <div class="spotlight-card p-6 rounded-3xl relative flex flex-col justify-between group">
+          <div><div class="h-40 rounded-2xl bg-gradient-to-br from-cyan-900/40 to-slate-900/80 border border-white/[0.08] relative overflow-hidden flex items-center justify-center p-4 mb-5"><div class="absolute inset-0 bg-grid-pattern opacity-30"></div><div class="text-center relative z-10"><i class="fas fa-eye text-4xl text-cyan-400 mb-2"></i><div class="text-xs font-mono text-cyan-300">COMPUTER VISION</div></div></div><div class="flex items-center justify-between gap-3 mb-2"><h3 class="text-xl font-bold text-white font-display group-hover:text-cyan-300 transition-colors">Vision & Intelligence</h3><span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">FUTURE</span></div><div class="flex flex-wrap gap-1.5 my-3"><span class="tech-tag text-[10px]">Computer Vision</span><span class="tech-tag text-[10px]">Deep Learning</span><span class="tech-tag text-[10px]">Robotics</span></div><p class="text-slate-400 text-sm leading-relaxed">Exploring future applications of computer vision and machine learning for intelligent systems, automation, robotics, and real-world problem solving.</p></div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between"><span class="text-xs text-slate-400 flex items-center gap-1.5 font-mono"><i class="fas fa-compass text-cyan-400"></i> FUTURE DIRECTION</span><span class="text-xs text-cyan-400 flex items-center gap-1.5 font-mono">TO EXPLORE <i class="fas fa-arrow-right text-[10px]"></i></span></div>
         </div>
-
-
       </div>
-
-
-
-      <!-- ===== BOTTOM MESSAGE ===== -->
-      <div class="text-center mt-12
-      max-w-3xl mx-auto">
-
-
-        <p class="text-slate-400 text-sm md:text-base
-        leading-relaxed">
-
-          These are not finished projects — they are possibilities.
-          ARISE is being built around the idea that curious students,
-          working together, can turn ambitious ideas into meaningful
-          technology.
-
-        </p>
-
-
-        <a href="#join" class="btn-secondary px-8 py-3 rounded-full
-        text-xs font-bold uppercase tracking-wider
-        inline-flex items-center gap-2 mt-6">
-
-          <span>Help Shape Future Projects</span>
-
-          <i class="fas fa-arrow-right
-          text-[10px]">
-          </i>
-
-        </a>
-
-
-      </div>
-
-
+      <div class="text-center mt-12 max-w-3xl mx-auto"><p class="text-slate-400 text-sm md:text-base leading-relaxed">These are not finished projects — they are possibilities. ARISE is being built around the idea that curious students, working together, can turn ambitious ideas into meaningful technology.</p><a href="#join" class="btn-secondary px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2 mt-6"><span>Help Shape Future Projects</span><i class="fas fa-arrow-right text-[10px]"></i></a></div>
     </div>
-
   </section>
 
-  <!-- ===== TEAM / INNOVATORS SECTION ===== -->
+  <!-- Team -->
   <section id="team" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06]">
     <div class="container mx-auto max-w-6xl">
-
       <div class="text-center max-w-3xl mx-auto mb-16">
         <span class="section-tag mb-3">Leadership &amp; Minds</span>
-        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
-          Be Part of the <span class="text-gradient">Beginning</span>
-        </h2>
-        <p class="text-slate-400 text-sm md:text-base mt-2">ARISE is currently looking for curious students who want to
-          help shape the future of AI at SSGMCE.</p>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">Be Part of the <span class="text-gradient">Beginning</span></h2>
+        <p class="text-slate-400 text-sm md:text-base mt-2">ARISE is currently looking for curious students who want to help shape the future of AI at SSGMCE.</p>
       </div>
-
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <!-- Member 1 -->
         <div class="spotlight-card p-6 rounded-3xl text-center relative group">
-          <div class="relative w-24 h-24 mx-auto mb-4">
-            <div
-              class="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 p-0.5 animate-shimmer">
-              <div
-                class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-purple-300 font-display">
-
-              </div>
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white font-display"> </h3>
-          <p class="text-xs font-mono philosophy-word mt-1"> </p>
-          <p class="text-slate-400 text-xs mt-3 leading-relaxed"></p>
-          </p>
-          <div class="flex justify-center gap-3 mt-4 text-slate-400">
-            <a href="#"
-              class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:philosophy-word hover:border-purple-500/40 transition"><i
-                class="fab fa-linkedin-in text-xs"></i></a>
-            <a href="#"
-              class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:philosophy-word hover:border-purple-500/40 transition"><i
-                class="fab fa-github text-xs"></i></a>
-          </div>
+          <div class="relative w-24 h-24 mx-auto mb-4"><div class="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 p-0.5 animate-shimmer"><div class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-purple-300 font-display">AK</div></div></div>
+          <h3 class="text-lg font-bold text-white font-display">Aarav K.</h3><p class="text-xs font-mono philosophy-word mt-1">Founder & Lead</p><p class="text-slate-400 text-xs mt-3 leading-relaxed">ML Researcher • ex-Google Summer of Code</p>
+          <div class="flex justify-center gap-3 mt-4 text-slate-400"><a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:philosophy-word hover:border-purple-500/40 transition"><i class="fab fa-linkedin-in text-xs"></i></a><a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:philosophy-word hover:border-purple-500/40 transition"><i class="fab fa-github text-xs"></i></a></div>
         </div>
-
-        <!-- Member 2 -->
         <div class="spotlight-card p-6 rounded-3xl text-center relative group">
-          <div class="relative w-24 h-24 mx-auto mb-4">
-            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 p-0.5">
-              <div
-                class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-cyan-300 font-display">
-
-              </div>
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white font-display"></h3>
-          <p class="text-xs font-mono text-cyan-400 mt-1"></p>
-          <p class="text-slate-400 text-xs mt-3 leading-relaxed"></p>
-          <div class="flex justify-center gap-3 mt-4 text-slate-400">
-            <a href="#"
-              class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500/40 transition"><i
-                class="fab fa-linkedin-in text-xs"></i></a>
-            <a href="#"
-              class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500/40 transition"><i
-                class="fab fa-github text-xs"></i></a>
-          </div>
+          <div class="relative w-24 h-24 mx-auto mb-4"><div class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 p-0.5"><div class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-cyan-300 font-display">SM</div></div></div>
+          <h3 class="text-lg font-bold text-white font-display">Sneha M.</h3><p class="text-xs font-mono text-cyan-400 mt-1">VP Engineering</p><p class="text-slate-400 text-xs mt-3 leading-relaxed">Full-stack AI • MLOps enthusiast</p>
+          <div class="flex justify-center gap-3 mt-4 text-slate-400"><a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500/40 transition"><i class="fab fa-linkedin-in text-xs"></i></a><a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500/40 transition"><i class="fab fa-github text-xs"></i></a></div>
         </div>
-
-        <!-- Member 3 -->
         <div class="spotlight-card p-6 rounded-3xl text-center relative group">
-          <div class="relative w-24 h-24 mx-auto mb-4">
-            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 p-0.5">
-              <div
-                class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-pink-300 font-display">
-
-              </div>
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white font-display"></h3>
-          <p class="text-xs font-mono text-pink-400 mt-1"></p>
-          <p class="text-slate-400 text-xs mt-3 leading-relaxed">
-          </p>
-          <div class="flex justify-center gap-3 mt-4 text-slate-400">
-            <a href="#"
-              class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-pink-400 hover:border-pink-500/40 transition"><i
-                class="fab fa-linkedin-in text-xs"></i></a>
-            <a href="#"
-              class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-pink-400 hover:border-pink-500/40 transition"><i
-                class="fab fa-github text-xs"></i></a>
-          </div>
+          <div class="relative w-24 h-24 mx-auto mb-4"><div class="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 p-0.5"><div class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-pink-300 font-display">RV</div></div></div>
+          <h3 class="text-lg font-bold text-white font-display">Riya V.</h3><p class="text-xs font-mono text-pink-400 mt-1">Research Lead</p><p class="text-slate-400 text-xs mt-3 leading-relaxed">NLP • ex-ISRO intern</p>
+          <div class="flex justify-center gap-3 mt-4 text-slate-400"><a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-pink-400 hover:border-pink-500/40 transition"><i class="fab fa-linkedin-in text-xs"></i></a><a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-pink-400 hover:border-pink-500/40 transition"><i class="fab fa-github text-xs"></i></a></div>
         </div>
-
-        <!-- Member 4 -->
         <div class="spotlight-card p-6 rounded-3xl text-center relative group">
-          <div class="relative w-24 h-24 mx-auto mb-4">
-            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 p-0.5">
-              <div
-                class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-indigo-300 font-display">
-
-              </div>
-            </div>
-          </div>
-          <h3 class="text-lg font-bold text-white font-display"></h3>
-          <p class="text-xs font-mono text-indigo-400 mt-1"></p>
-          <p class="text-slate-400 text-xs mt-3 leading-relaxed">
-          </p>
-          <div class="flex justify-center gap-3 mt-4 text-slate-400">
-            <a href="#"
-              class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-indigo-400 hover:border-indigo-500/40 transition"><i
-                class="fab fa-linkedin-in text-xs"></i></a>
-            <a href="#"
-              class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-indigo-400 hover:border-indigo-500/40 transition"><i
-                class="fab fa-github text-xs"></i></a>
-          </div>
+          <div class="relative w-24 h-24 mx-auto mb-4"><div class="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 p-0.5"><div class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-indigo-300 font-display">AR</div></div></div>
+          <h3 class="text-lg font-bold text-white font-display">Aditya R.</h3><p class="text-xs font-mono text-indigo-400 mt-1">Community & Ops</p><p class="text-slate-400 text-xs mt-3 leading-relaxed">DevRel • Hackathon organizer</p>
+          <div class="flex justify-center gap-3 mt-4 text-slate-400"><a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-indigo-400 hover:border-indigo-500/40 transition"><i class="fab fa-linkedin-in text-xs"></i></a><a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-indigo-400 hover:border-indigo-500/40 transition"><i class="fab fa-github text-xs"></i></a></div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ===== RESOURCES SECTION ===== -->
+  <!-- Resources -->
   <section id="resources" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06] bg-[#070818]/60">
     <div class="container mx-auto max-w-6xl">
-
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-        <div>
-          <span class="section-tag mb-3">Knowledge Vault</span>
-          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
-            Learn With <span class="text-gradient-violet">ARISE</span>
-          </h2>
-          <p class="text-slate-400 text-sm md:text-base mt-2">Curated roadmaps, tutorials, and reading materials to
-            master modern AI.</p>
-        </div>
+        <div><span class="section-tag mb-3">Knowledge Vault</span><h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">Learn With <span class="text-gradient-violet">ARISE</span></h2><p class="text-slate-400 text-sm md:text-base mt-2">Curated roadmaps, tutorials, and reading materials to master modern AI.</p></div>
       </div>
-
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-        <div class="spotlight-card p-6 rounded-3xl relative group">
-          <div class="icon-box-glow mb-4">
-            <i class="fas fa-map-signs"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white font-display mb-1">AI Roadmaps</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">Step-by-step guides from zero coding to training
-            transformer models.</p>
-          <a href="#"
-            class="text-xs font-bold philosophy-word hover:text-purple-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
-            <span>Explore Roadmaps</span> <i class="fas fa-arrow-right text-[10px]"></i>
-          </a>
-        </div>
-
-        <div class="spotlight-card p-6 rounded-3xl relative group">
-          <div class="icon-box-glow mb-4">
-            <i class="fas fa-brain"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white font-display mb-1">ML Fundamentals</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">Linear algebra, calculus, gradient descent, and
-            statistical foundations.</p>
-          <a href="#"
-            class="text-xs font-bold text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
-            <span>Access Notes</span> <i class="fas fa-arrow-right text-[10px]"></i>
-          </a>
-        </div>
-
-        <div class="spotlight-card p-6 rounded-3xl relative group">
-          <div class="icon-box-glow mb-4">
-            <i class="fab fa-python"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white font-display mb-1">Python for AI</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">NumPy, Pandas, PyTorch workflows, vector databases, and
-            APIs.</p>
-          <a href="#"
-            class="text-xs font-bold text-yellow-400 hover:text-yellow-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
-            <span>Code Notebooks</span> <i class="fas fa-arrow-right text-[10px]"></i>
-          </a>
-        </div>
-
-        <div class="spotlight-card p-6 rounded-3xl relative group">
-          <div class="icon-box-glow mb-4">
-            <i class="fas fa-file-invoice"></i>
-          </div>
-          <h3 class="text-lg font-bold text-white font-display mb-1">Research Papers</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">Summaries and code reproductions of seminal ML research
-            papers.</p>
-          <a href="#"
-            class="text-xs font-bold text-pink-400 hover:text-pink-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
-            <span>Browse Archive</span> <i class="fas fa-arrow-right text-[10px]"></i>
-          </a>
-        </div>
-
+        <div class="spotlight-card p-6 rounded-3xl relative group"><div class="icon-box-glow mb-4"><i class="fas fa-map-signs"></i></div><h3 class="text-lg font-bold text-white font-display mb-1">AI Roadmaps</h3><p class="text-slate-400 text-xs leading-relaxed mb-4">Step-by-step guides from zero coding to training transformer models.</p><a href="#" class="text-xs font-bold philosophy-word hover:text-purple-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform"><span>Explore Roadmaps</span> <i class="fas fa-arrow-right text-[10px]"></i></a></div>
+        <div class="spotlight-card p-6 rounded-3xl relative group"><div class="icon-box-glow mb-4"><i class="fas fa-brain"></i></div><h3 class="text-lg font-bold text-white font-display mb-1">ML Fundamentals</h3><p class="text-slate-400 text-xs leading-relaxed mb-4">Linear algebra, calculus, gradient descent, and statistical foundations.</p><a href="#" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform"><span>Access Notes</span> <i class="fas fa-arrow-right text-[10px]"></i></a></div>
+        <div class="spotlight-card p-6 rounded-3xl relative group"><div class="icon-box-glow mb-4"><i class="fab fa-python"></i></div><h3 class="text-lg font-bold text-white font-display mb-1">Python for AI</h3><p class="text-slate-400 text-xs leading-relaxed mb-4">NumPy, Pandas, PyTorch workflows, vector databases, and APIs.</p><a href="#" class="text-xs font-bold text-yellow-400 hover:text-yellow-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform"><span>Code Notebooks</span> <i class="fas fa-arrow-right text-[10px]"></i></a></div>
+        <div class="spotlight-card p-6 rounded-3xl relative group"><div class="icon-box-glow mb-4"><i class="fas fa-file-invoice"></i></div><h3 class="text-lg font-bold text-white font-display mb-1">Research Papers</h3><p class="text-slate-400 text-xs leading-relaxed mb-4">Summaries and code reproductions of seminal ML research papers.</p><a href="#" class="text-xs font-bold text-pink-400 hover:text-pink-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform"><span>Browse Archive</span> <i class="fas fa-arrow-right text-[10px]"></i></a></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== JOIN / CTA SECTION ===== -->
+  <!-- Join CTA -->
   <section id="join" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06]">
     <div class="container mx-auto max-w-5xl">
-      <div
-        class="spotlight-card p-10 md:p-16 rounded-[2.5rem] relative text-center overflow-hidden border border-purple-500/30 bg-gradient-to-b from-purple-950/40 via-[#0b0c20]/90 to-[#06060e]">
+      <div class="spotlight-card p-10 md:p-16 rounded-[2.5rem] relative text-center overflow-hidden border border-purple-500/30 bg-gradient-to-b from-purple-950/40 via-[#0b0c20]/90 to-[#06060e]">
         <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
         <div class="relative z-10 max-w-2xl mx-auto">
           <span class="section-tag mb-4">BE PART OF THE BEGINNING</span>
-          <h2 class="text-4xl md:text-6xl font-extrabold text-white font-display tracking-tight mt-2">
-            Help Build ARISE from <span class="text-gradient">Day One</span>
-          </h2>
-          <p class="text-slate-300 text-base md:text-lg mt-4 leading-relaxed font-light">
-            ARISE is currently in its early stage. We are looking for students who are curious about Artificial
-            Intelligence, technology, research, development, and innovation.
-          </p>
+          <h2 class="text-4xl md:text-6xl font-extrabold text-white font-display tracking-tight mt-2">Help Build ARISE from <span class="text-gradient">Day One</span></h2>
+          <p class="text-slate-300 text-base md:text-lg mt-4 leading-relaxed font-light">ARISE is currently in its early stage. We are looking for students who are curious about Artificial Intelligence, technology, research, development, and innovation.</p>
           <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
-            <a href="#contact"
-              class="btn-primary px-10 py-4 rounded-full text-base font-bold tracking-wide uppercase shadow-2xl shadow-purple-600/40">
-              Apply to Join ARISE
-            </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
-              class="btn-secondary px-8 py-4 rounded-full text-base font-semibold flex items-center gap-2">
-              <i class="fab fa-discord text-indigo-400"></i> Join Community Chat
-            </a>
+            <a href="#contact" class="btn-primary px-10 py-4 rounded-full text-base font-bold tracking-wide uppercase shadow-2xl shadow-purple-600/40">Apply to Join ARISE</a>
+            <a href="#" class="btn-secondary px-8 py-4 rounded-full text-base font-semibold flex items-center gap-2"><i class="fab fa-discord text-indigo-400"></i> Join Community Chat</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== CONTACT SECTION ===== -->
+  <!-- Contact -->
   <section id="contact" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06] bg-[#070818]/60">
     <div class="container mx-auto max-w-6xl">
-
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-
-        <!-- Contact Info -->
-        <div>
-          <span class="section-tag mb-3">Get in Touch</span>
-          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
-            Let's <span class="text-gradient-violet">Connect</span>
-          </h2>
-          <p class="text-slate-300 text-base mt-4 leading-relaxed font-light">
-            Have an idea for collaboration, want to mentor, sponsor a hackathon, or join the core team? Reach out to us
-            directly.
-          </p>
-
+        <div><span class="section-tag mb-3">Get in Touch</span><h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">Let's <span class="text-gradient-violet">Connect</span></h2><p class="text-slate-300 text-base mt-4 leading-relaxed font-light">Have an idea for collaboration, want to mentor, sponsor a hackathon, or join the core team? Reach out to us directly.</p>
           <div class="space-y-4 mt-8 text-sm text-slate-300">
-            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-              <div
-                class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center philosophy-word">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div>
-                <div class="text-xs text-slate-400 font-mono">EMAIL</div>
-                <span class="text-white font-medium">arise.ssgmce@example.com</span>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-              <div
-                class="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
-                <i class="fab fa-instagram"></i>
-              </div>
-              <div>
-                <div class="text-xs text-slate-400 font-mono">INSTAGRAM</div>
-                <span class="text-white font-medium">@arise_ssgmce</span>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-              <div
-                class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
-                <i class="fab fa-linkedin-in"></i>
-              </div>
-              <div>
-                <div class="text-xs text-slate-400 font-mono">LINKEDIN</div>
-                <span class="text-white font-medium">ARISE SSGMCE</span>
-              </div>
-            </div>
-
-            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
-              <div
-                class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
-                <i class="fas fa-map-marker-alt"></i>
-              </div>
-              <div>
-                <div class="text-xs text-slate-400 font-mono">CAMPUS</div>
-                <span class="text-white font-medium">SSGMCE, Shegaon, Maharashtra, India</span>
-              </div>
-            </div>
+            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]"><div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center philosophy-word"><i class="fas fa-envelope"></i></div><div><div class="text-xs text-slate-400 font-mono">EMAIL</div><span class="text-white font-medium">arise.ssgmce@example.com</span></div></div>
+            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]"><div class="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400"><i class="fab fa-instagram"></i></div><div><div class="text-xs text-slate-400 font-mono">INSTAGRAM</div><span class="text-white font-medium">@arise_ssgmce</span></div></div>
+            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]"><div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400"><i class="fab fa-linkedin-in"></i></div><div><div class="text-xs text-slate-400 font-mono">LINKEDIN</div><span class="text-white font-medium">ARISE SSGMCE</span></div></div>
+            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]"><div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400"><i class="fas fa-map-marker-alt"></i></div><div><div class="text-xs text-slate-400 font-mono">CAMPUS</div><span class="text-white font-medium">SSGMCE, Shegaon, Maharashtra, India</span></div></div>
           </div>
         </div>
-
-        <!-- Contact Form -->
         <div class="spotlight-card p-8 md:p-10 rounded-3xl relative border border-white/[0.08]">
-          <h3 class="text-2xl font-bold text-white font-display mb-1">Send a Message</h3>
-          <p class="text-slate-400 text-xs mb-6">Fill out the details and our team will get back to you within 24 hours.
-          </p>
-
+          <h3 class="text-2xl font-bold text-white font-display mb-1">Send a Message</h3><p class="text-slate-400 text-xs mb-6">Fill out the details and our team will get back to you within 24 hours.</p>
           <form id="contact-form" class="space-y-4">
-            <div>
-              <label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Your Name</label>
-              <input type="text" required placeholder="John Doe" class="form-input-glass">
-            </div>
-
-            <div>
-              <label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Email
-                Address</label>
-              <input type="email" required placeholder="john@example.com" class="form-input-glass">
-            </div>
-
-            <div>
-              <label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Subject</label>
-              <input type="text" required placeholder="Project Collaboration / Membership" class="form-input-glass">
-            </div>
-
-            <div>
-              <label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Message</label>
-              <textarea rows="3" required placeholder="Tell us how you'd like to get involved..."
-                class="form-input-glass resize-none"></textarea>
-            </div>
-
-            <button type="submit"
-              class="btn-primary w-full py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider mt-2">
-              Send Message
-            </button>
+            <div><label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Your Name</label><input type="text" required placeholder="John Doe" class="form-input-glass"></div>
+            <div><label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Email Address</label><input type="email" required placeholder="john@example.com" class="form-input-glass"></div>
+            <div><label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Subject</label><input type="text" required placeholder="Project Collaboration / Membership" class="form-input-glass"></div>
+            <div><label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Message</label><textarea rows="3" required placeholder="Tell us how you'd like to get involved..." class="form-input-glass resize-none"></textarea></div>
+            <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider mt-2">Send Message</button>
           </form>
-
-          <div id="form-success"
-            class="hidden mt-4 p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-sm text-center">
-            <i class="fas fa-check-circle mr-2"></i> Thank you! Your message has been sent successfully.
-          </div>
+          <div id="form-success" class="hidden mt-4 p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-sm text-center"><i class="fas fa-check-circle mr-2"></i> Thank you! Your message has been sent successfully.</div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- Footer -->
   <footer class="py-14 px-6 md:px-12 relative z-10 border-t border-white/[0.08] bg-[#04050b] text-slate-400 text-sm">
     <div class="container mx-auto max-w-6xl">
       <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-
-        <div class="flex items-center gap-3">
-          <div
-            class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-              <path
-                d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-            </svg>
-          </div>
-          <div>
-            <span class="text-lg font-bold text-white font-display">ARISE <span
-                class="philosophy-word">SSGMCE</span></span>
-            <p class="text-xs text-slate-400">Research. Build. Deploy. Impact.</p>
-          </div>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-6 text-xs font-medium">
-          <a href="#home" class="hover:philosophy-word transition">Home</a>
-          <a href="#what-we-do" class="hover:philosophy-word transition">What We Do</a>
-          <a href="#about" class="hover:philosophy-word transition">About</a>
-          <a href="#events" class="hover:philosophy-word transition">Events</a>
-          <a href="#projects" class="hover:philosophy-word transition">Projects</a>
-          <a href="#team" class="hover:philosophy-word transition">Team</a>
-          <a href="#resources" class="hover:philosophy-word transition">Resources</a>
-          <a href="#contact" class="hover:philosophy-word transition">Contact</a>
-        </div>
-
-        <div class="flex items-center gap-4 text-base text-slate-400">
-          <a href="#" class="hover:philosophy-word transition"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="hover:philosophy-word transition"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" class="hover:philosophy-word transition"><i class="fab fa-github"></i></a>
-          <a href="#" class="hover:philosophy-word transition"><i class="fab fa-discord"></i></a>
-        </div>
-
+        <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div><div><span class="text-lg font-bold text-white font-display">ARISE <span class="philosophy-word">SSGMCE</span></span><p class="text-xs text-slate-400">Research. Build. Deploy. Impact.</p></div></div>
+        <div class="flex flex-wrap justify-center gap-6 text-xs font-medium"><a href="#home" class="hover:philosophy-word transition">Home</a><a href="#what-we-do" class="hover:philosophy-word transition">What We Do</a><a href="#about" class="hover:philosophy-word transition">About</a><a href="#events" class="hover:philosophy-word transition">Events</a><a href="#projects" class="hover:philosophy-word transition">Projects</a><a href="#team" class="hover:philosophy-word transition">Team</a><a href="#resources" class="hover:philosophy-word transition">Resources</a><a href="#contact" class="hover:philosophy-word transition">Contact</a></div>
+        <div class="flex items-center gap-4 text-base text-slate-400"><a href="#" class="hover:philosophy-word transition"><i class="fab fa-instagram"></i></a><a href="#" class="hover:philosophy-word transition"><i class="fab fa-linkedin-in"></i></a><a href="#" class="hover:philosophy-word transition"><i class="fab fa-github"></i></a><a href="#" class="hover:philosophy-word transition"><i class="fab fa-discord"></i></a></div>
       </div>
-
-      <div class="mt-8 pt-6 border-t border-white/[0.04] text-center text-xs text-slate-500">
-        © 2026 ARISE SSGMCE. All Rights Reserved. Built with curiosity &amp; innovation by the ARISE AI Collective.
-      </div>
+      <div class="mt-8 pt-6 border-t border-white/[0.04] text-center text-xs text-slate-500">© 2026 ARISE SSGMCE. All Rights Reserved. Built with curiosity &amp; innovation by the ARISE AI Collective.</div>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="aries.js"></script>
+  <!-- Mobile menu toggle (basic, no external JS needed) -->
+  <script>
+    (function() {
+      const hamburger = document.getElementById('hamburger');
+      const closeMenu = document.getElementById('close-menu');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const links = mobileMenu.querySelectorAll('a');
+
+      function openMenu() {
+        mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        mobileMenu.classList.add('pointer-events-auto');
+      }
+      function closeMenuFn() {
+        mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'pointer-events-none');
+        mobileMenu.classList.remove('pointer-events-auto');
+      }
+      hamburger.addEventListener('click', openMenu);
+      closeMenu.addEventListener('click', closeMenuFn);
+      links.forEach(link => link.addEventListener('click', closeMenuFn));
+    })();
+  </script>
 </body>
 
 </html>
