@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARISE SSGMCE · Artificial Intelligence &amp; Research Collective</title>
+  <meta name="description" content="ARISE is the premier student-driven Artificial Intelligence and Research Club at SSGMCE. Research. Build. Deploy. Impact.">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Custom Aesthetic Styles -->
+  <link rel="stylesheet" href="aries.css">
+</head>
+<body class="bg-[#06060e] text-[#f1f5f9] min-h-screen relative selection:bg-purple-500/30 selection:text-white">
+
+  <!-- ===== AMBIENT GLOW AURAS ===== -->
+  <div class="ambient-glow ambient-purple"></div>
+  <div class="ambient-glow ambient-cyan"></div>
+  <div class="ambient-glow ambient-pink"></div>
+
+  <!-- ===== FLOATING NAVBAR ===== -->
+  <header class="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-5 transition-all duration-300" id="navbar-container">
+    <nav id="navbar" class="w-full max-w-6xl py-3.5 px-6 rounded-2xl flex items-center justify-between transition-all duration-300 border border-white/[0.08] bg-[#090b1d]/75 backdrop-blur-xl shadow-2xl shadow-purple-950/20">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-purple-600/30 group-hover:scale-105 transition-transform">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="text-xl font-extrabold tracking-wider text-white font-display">ARISE</span>
+            <span class="text-[10px] font-bold font-mono uppercase px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">SSGMCE</span>
+          </div>
+          <span class="text-[10px] text-slate-400 tracking-widest uppercase -mt-0.5 font-semibold">AI Collective</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+        <a href="#home" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="#what-we-do" class="nav-link hover:text-white transition-colors">What We Do</a>
+        <a href="#about" class="nav-link hover:text-white transition-colors">About</a>
+        <a href="#events" class="nav-link hover:text-white transition-colors">Events</a>
+        <a href="#projects" class="nav-link hover:text-white transition-colors">Projects</a>
+        <a href="#team" class="nav-link hover:text-white transition-colors">Team</a>
+        <a href="#resources" class="nav-link hover:text-white transition-colors">Resources</a>
+        <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
+      </div>
+
+      <!-- Action Button -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="#join" class="btn-primary px-5 py-2 rounded-full text-xs font-bold tracking-wide uppercase flex items-center gap-2">
+          <span>Join ARISE</span>
+          <i class="fas fa-arrow-right text-[10px]"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button id="hamburger" class="lg:hidden text-slate-300 hover:text-white text-xl p-2 focus:outline-none" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ===== MOBILE MENU DRAWER ===== -->
+  <div id="mobile-menu" class="fixed inset-0 bg-[#06060e]/95 backdrop-blur-2xl z-50 flex flex-col items-center justify-center gap-6 text-xl font-medium text-slate-200 transition-all duration-300 -translate-y-full opacity-0 pointer-events-none">
+    <div class="flex items-center gap-2 mb-4">
+      <span class="text-3xl font-extrabold text-white font-display">ARISE</span>
+      <span class="text-xs font-bold font-mono uppercase px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">SSGMCE</span>
+    </div>
+    <a href="#home" class="hover:text-purple-400 transition">Home</a>
+    <a href="#what-we-do" class="hover:text-purple-400 transition">What We Do</a>
+    <a href="#about" class="hover:text-purple-400 transition">About</a>
+    <a href="#events" class="hover:text-purple-400 transition">Events</a>
+    <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
+    <a href="#team" class="hover:text-purple-400 transition">Team</a>
+    <a href="#resources" class="hover:text-purple-400 transition">Resources</a>
+    <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
+    <a href="#join" class="btn-primary px-8 py-3 rounded-full text-sm font-bold uppercase tracking-wider mt-4">Join Community</a>
+    <button id="close-menu" class="absolute top-6 right-6 text-2xl text-slate-400 hover:text-white p-2">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="home" class="min-h-screen relative flex items-center overflow-hidden pt-28 pb-20">
+    <!-- Interactive Canvas & Grid -->
+    <canvas id="particles-canvas"></canvas>
+    <div class="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-radial-gradient pointer-events-none"></div>
+
+    <!-- Cyber Stag Hero Artwork (from workspace image.png) -->
+    <div class="hero-silhouette-container hidden md:block">
+      <img src="image.png" alt="ARISE Cyber Stag Mascot" class="w-full h-full object-contain object-bottom select-none">
+    </div>
+
+    <div class="container mx-auto px-6 md:px-12 relative z-10">
+      <div class="max-w-3xl">
+        
+        <!-- Status Pill -->
+        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/25 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-6 shadow-lg shadow-purple-500/10">
+          <span class="pulse-dot"></span>
+          <span>Official AI &amp; Research Collective · SSGMCE</span>
+        </div>
+
+        <!-- Main Title -->
+        <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight text-white font-display leading-[1.05]">
+          ARISE
+        </h1>
+        
+        <!-- Pronunciation / Definition Badge -->
+        <div class="flex items-center gap-3 mt-3 text-slate-400 font-mono text-sm">
+          <span class="px-2.5 py-0.5 rounded-md bg-white/[0.05] border border-white/[0.08] text-purple-300 font-semibold">noun</span>
+          <span>·</span>
+          <span class="text-slate-300">/əˈraɪz/</span>
+        </div>
+
+        <!-- Definition Quote Card -->
+        <div class="mt-6 p-4 rounded-2xl bg-white/[0.03] border-l-4 border-purple-500 border-t border-r border-b border-white/[0.06] backdrop-blur-md max-w-2xl">
+          <p class="text-slate-300 text-sm md:text-base italic leading-relaxed">
+            "The first spark of innovation, characterised by absolute curiosity and immense ambition. The ARISE mind strives for prominence in every project it undertakes."
+          </p>
+        </div>
+
+        <!-- Philosophy Mantra -->
+        <div class="mt-8 flex flex-wrap items-center gap-3 text-2xl md:text-3xl font-bold font-display">
+          <span class="philosophy-word">Research.</span>
+          <span class="text-purple-400">·</span>
+          <span class="philosophy-word">Build.</span>
+          <span class="text-purple-400">·</span>
+          <span class="philosophy-word">Deploy.</span>
+          <span class="text-purple-400">·</span>
+          <span class="philosophy-word">Impact.</span>
+        </div>
+
+        <!-- Description -->
+        <p class="text-slate-300 text-base md:text-lg mt-6 leading-relaxed max-w-2xl font-light">
+          ARISE is a high-octane, student-driven Artificial Intelligence collective at SSGMCE. We combine theoretical machine learning research with practical software engineering to build impactful systems for the modern era.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-4 mt-8">
+          <a href="#events" class="btn-primary px-8 py-3.5 rounded-full text-sm font-bold tracking-wide flex items-center gap-2.5">
+            <span>Explore Events</span>
+            <i class="fas fa-arrow-right text-xs"></i>
+          </a>
+          <a href="#projects" class="btn-secondary px-8 py-3.5 rounded-full text-sm font-bold tracking-wide flex items-center gap-2">
+            <i class="fab fa-github"></i>
+            <span>View Projects</span>
+          </a>
+          <a href="#about" class="px-5 py-3.5 rounded-full text-xs font-semibold text-slate-400 hover:text-white transition">
+            Learn More <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
+          </a>
+        </div>
+
+        <!-- Stats Counter Strip -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-12 pt-8 border-t border-white/[0.08] max-w-2xl">
+          <div>
+            <div class="text-2xl md:text-3xl font-extrabold text-white font-display">500+</div>
+            <div class="text-xs text-slate-400 mt-0.5">Active Members</div>
+          </div>
+          <div>
+            <div class="text-2xl md:text-3xl font-extrabold text-purple-400 font-display">25+</div>
+            <div class="text-xs text-slate-400 mt-0.5">AI Projects</div>
+          </div>
+          <div>
+            <div class="text-2xl md:text-3xl font-extrabold text-cyan-400 font-display">15+</div>
+            <div class="text-xs text-slate-400 mt-0.5">Hackathons &amp; Events</div>
+          </div>
+          <div>
+            <div class="text-2xl md:text-3xl font-extrabold text-indigo-300 font-display">100%</div>
+            <div class="text-xs text-slate-400 mt-0.5">Student-Driven</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHAT WE DO SECTION (BENTO GRID) ===== -->
+  <section id="what-we-do" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06] bg-[#070818]/60">
+    <div class="container mx-auto max-w-6xl">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="section-tag mb-3">Core Activities</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
+            What We <span class="text-gradient-violet">Do</span>
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base mt-2 max-w-xl">
+            More than just a campus club — a tangible track record of real innovation, publications, and products you can Ctrl+F.
+          </p>
+        </div>
+        <div class="text-xs font-mono text-slate-400 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/[0.06] flex items-center gap-2">
+          <span class="pulse-dot-purple"></span>
+          <span>STATUS: ACTIVELY BUILDING</span>
+        </div>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Bento Card 1 (Large - 2 cols) -->
+        <div class="spotlight-card md:col-span-2 p-8 rounded-3xl relative">
+          <div class="flex items-center justify-between mb-6">
+            <div class="icon-box-glow">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <span class="text-xs font-mono text-purple-300 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20">Production AI</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white font-display mb-3">Shipping Real-World AI Systems</h3>
+          <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+            We don't stop at Jupyter notebooks. We build end-to-end autonomous agents, fine-tune LLMs, integrate computer vision pipelines, and deploy robust APIs with real user metrics.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag"><i class="fas fa-cube mr-1 text-purple-400"></i> PyTorch</span>
+            <span class="tech-tag"><i class="fas fa-brain mr-1 text-cyan-400"></i> Hugging Face</span>
+            <span class="tech-tag"><i class="fas fa-bolt mr-1 text-yellow-400"></i> FastAPI</span>
+            <span class="tech-tag"><i class="fas fa-cloud mr-1 text-blue-400"></i> Docker &amp; Cloud</span>
+          </div>
+        </div>
+
+        <!-- Bento Card 2 -->
+        <div class="spotlight-card p-8 rounded-3xl relative">
+          <div class="flex items-center justify-between mb-6">
+            <div class="icon-box-glow">
+              <i class="fas fa-microscope"></i>
+            </div>
+            <span class="text-xs font-mono text-cyan-300 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20">Research</span>
+          </div>
+          <h3 class="text-xl font-bold text-white font-display mb-3">Pioneering AI Research</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            Student-driven paper writing, experimentation with novel architectures, and regular breakdowns of groundbreaking arXiv releases.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">arXiv</span>
+            <span class="tech-tag">NeurIPS Reads</span>
+            <span class="tech-tag">CVPR</span>
+          </div>
+        </div>
+
+        <!-- Bento Card 3 -->
+        <div class="spotlight-card p-8 rounded-3xl relative">
+          <div class="flex items-center justify-between mb-6">
+            <div class="icon-box-glow">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <span class="text-xs font-mono text-yellow-300 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20">Competitions</span>
+          </div>
+          <h3 class="text-xl font-bold text-white font-display mb-3">Hackathons &amp; Sprints</h3>
+          <p class="text-slate-300 text-sm leading-relaxed mb-6">
+            Hosting 24-36 hour intense build sprints, competitive coding championships, and national AI challenges with exciting prize pools.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag">24h Hackathons</span>
+            <span class="tech-tag">Kaggle Days</span>
+          </div>
+        </div>
+
+        <!-- Bento Card 4 (2 cols) -->
+        <div class="spotlight-card md:col-span-2 p-8 rounded-3xl relative">
+          <div class="flex items-center justify-between mb-6">
+            <div class="icon-box-glow">
+              <i class="fas fa-users"></i>
+            </div>
+            <span class="text-xs font-mono text-indigo-300 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20">Community</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white font-display mb-3">Workshops &amp; Industry Connect</h3>
+          <p class="text-slate-300 text-sm md:text-base leading-relaxed mb-6">
+            Connecting SSGMCE students with leading researchers, AI engineers, and tech alumni from product-based companies through masterclasses, AMAs, and mentorship.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-tag"><i class="fas fa-chalkboard-teacher mr-1 text-purple-400"></i> Hands-on Labs</span>
+            <span class="tech-tag"><i class="fas fa-podcast mr-1 text-pink-400"></i> Tech Talks</span>
+            <span class="tech-tag"><i class="fas fa-code-branch mr-1 text-indigo-400"></i> Open Source</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT / FOUR PILLARS SECTION ===== -->
+  <section id="about" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06]">
+    <div class="container mx-auto max-w-6xl">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="section-tag mb-3">Our Identity</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
+          What is <span class="text-gradient">ARISE?</span>
+        </h2>
+        <p class="text-slate-300 text-base md:text-lg mt-4 leading-relaxed font-light">
+          ARISE is the official Artificial Intelligence club of SSGMCE, built by students who are passionate about technology, innovation, and creating real-world impact. We believe that the future belongs to those who are curious enough to explore, brave enough to experiment, and determined enough to build.
+        </p>
+      </div>
+
+      <!-- 4 Pillars Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Pillar 1 -->
+        <div class="spotlight-card p-7 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="stat-watermark mb-2">01</div>
+            <div class="icon-box-glow mb-4">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white font-display mb-2">Research</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Explore emerging technologies, foundation models, and novel machine learning techniques to push boundaries.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-purple-400 flex items-center justify-between">
+            <span>EXPLORATION</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Pillar 2 -->
+        <div class="spotlight-card p-7 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="stat-watermark mb-2">02</div>
+            <div class="icon-box-glow mb-4">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white font-display mb-2">Build</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Transform theoretical mathematical concepts and raw ideas into functional, production-ready software solutions.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-cyan-400 flex items-center justify-between">
+            <span>ENGINEERING</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Pillar 3 -->
+        <div class="spotlight-card p-7 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="stat-watermark mb-2">03</div>
+            <div class="icon-box-glow mb-4">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white font-display mb-2">Deploy</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Take solutions beyond the classroom into cloud servers, mobile edges, and real environments with live users.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-indigo-400 flex items-center justify-between">
+            <span>PRODUCTION</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+        <!-- Pillar 4 -->
+        <div class="spotlight-card p-7 rounded-3xl relative flex flex-col justify-between">
+          <div>
+            <div class="stat-watermark mb-2">04</div>
+            <div class="icon-box-glow mb-4">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white font-display mb-2">Impact</h3>
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Create ethical, accessible technology that solves real societal, agricultural, and industrial challenges.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-white/[0.06] text-xs font-mono text-pink-400 flex items-center justify-between">
+            <span>SOCIETY</span>
+            <i class="fas fa-arrow-right"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VISION & MISSION SECTION ===== -->
+  <section class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06] bg-[#070818]/60">
+    <div class="container mx-auto max-w-6xl">
+      
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="section-tag mb-3">Guiding Principles</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
+          Vision &amp; <span class="text-gradient-violet">Mission</span>
+        </h2>
+        <p class="text-purple-300 text-lg md:text-xl font-light italic mt-3">
+          "Of the Students, For the Students and By the Students"
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6">
+          <span class="text-4xl font-extrabold font-display text-purple-500/40">01</span>
+          <div>
+            <h3 class="text-lg font-bold text-white font-display mb-1">Product-Based Mindset</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Build a world-class coding culture and instill problem-solving habits required for success in high-caliber product engineering firms.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6">
+          <span class="text-4xl font-extrabold font-display text-purple-500/40">02</span>
+          <div>
+            <h3 class="text-lg font-bold text-white font-display mb-1">Ignite Innovation</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Equip students with cutting-edge tools, GPUs, datasets, and frameworks needed to transform ideas into tangible breakthroughs.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6">
+          <span class="text-4xl font-extrabold font-display text-purple-500/40">03</span>
+          <div>
+            <h3 class="text-lg font-bold text-white font-display mb-1">Collaborative Ecosystem</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Foster radical curiosity and cross-disciplinary experimentation in an open, inclusive, and supportive peer-to-peer environment.
+            </p>
+          </div>
+        </div>
+
+        <div class="spotlight-card p-8 rounded-3xl relative flex items-start gap-6">
+          <span class="text-4xl font-extrabold font-display text-purple-500/40">04</span>
+          <div>
+            <h3 class="text-lg font-bold text-white font-display mb-1">Eliminate Phobia</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Demystify machine learning and coding anxiety through hands-on bootcamps, structured roadmaps, and dedicated 1-on-1 peer mentorship.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EVENTS & EXPERIENCES SECTION ===== -->
+  <section id="events" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06]">
+    <div class="container mx-auto max-w-6xl">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div>
+          <span class="section-tag mb-3">Community Gatherings</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
+            Events &amp; <span class="text-gradient">Experiences</span>
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base mt-2">Learn. Compete. Build. Connect.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-2 p-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] overflow-x-auto">
+          <button class="tab-btn event-tab-btn active" data-filter="all">All Events</button>
+          <button class="tab-btn event-tab-btn" data-filter="workshop">Workshops</button>
+          <button class="tab-btn event-tab-btn" data-filter="hackathon">Hackathons</button>
+          <button class="tab-btn event-tab-btn" data-filter="summit">Summits</button>
+        </div>
+      </div>
+
+      <!-- Events Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="events-grid">
+        
+        <!-- Event Card 1 -->
+        <div class="spotlight-card event-card-item rounded-3xl overflow-hidden group transition-all duration-300" data-category="workshop">
+          <div class="h-48 relative overflow-hidden bg-gradient-to-tr from-purple-900/60 via-indigo-900/40 to-slate-900 flex items-center justify-center p-6">
+            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+            <div class="w-16 h-16 rounded-2xl bg-purple-500/20 border border-purple-500/40 flex items-center justify-center text-purple-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform">
+              <i class="fas fa-brain"></i>
+            </div>
+            <div class="absolute top-4 left-4">
+              <span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 backdrop-blur-md">Workshop</span>
+            </div>
+            <div class="absolute top-4 right-4">
+              <span class="text-[11px] font-mono text-slate-300 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">Mar 15, 2026</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white font-display group-hover:text-purple-300 transition-colors">Mastering Generative AI &amp; LLMs</h3>
+            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+              Hands-on deep dive into fine-tuning open-source LLMs, RAG architectures, and multi-agent workflows.
+            </p>
+            <div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+              <span class="text-xs text-slate-400"><i class="fas fa-map-marker-alt text-purple-400 mr-1.5"></i> SSGMCE Lab 4</span>
+              <a href="#contact" class="text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span>Register</span> <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event Card 2 -->
+        <div class="spotlight-card event-card-item rounded-3xl overflow-hidden group transition-all duration-300" data-category="hackathon">
+          <div class="h-48 relative overflow-hidden bg-gradient-to-tr from-cyan-900/60 via-blue-900/40 to-slate-900 flex items-center justify-center p-6">
+            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+            <div class="w-16 h-16 rounded-2xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <div class="absolute top-4 left-4">
+              <span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 backdrop-blur-md">Hackathon</span>
+            </div>
+            <div class="absolute top-4 right-4">
+              <span class="text-[11px] font-mono text-slate-300 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">Apr 02, 2026</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white font-display group-hover:text-cyan-300 transition-colors">ARISE HackSprint 2026</h3>
+            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+              24-hour non-stop AI hackathon solving real-world challenges with exciting prizes and industry mentorship.
+            </p>
+            <div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+              <span class="text-xs text-slate-400"><i class="fas fa-trophy text-yellow-400 mr-1.5"></i> Prize Pool ₹50k</span>
+              <a href="#contact" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span>View Details</span> <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Event Card 3 -->
+        <div class="spotlight-card event-card-item rounded-3xl overflow-hidden group transition-all duration-300" data-category="summit">
+          <div class="h-48 relative overflow-hidden bg-gradient-to-tr from-pink-900/60 via-purple-900/40 to-slate-900 flex items-center justify-center p-6">
+            <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+            <div class="w-16 h-16 rounded-2xl bg-pink-500/20 border border-pink-500/40 flex items-center justify-center text-pink-300 text-2xl shadow-xl backdrop-blur-md group-hover:scale-110 transition-transform">
+              <i class="fas fa-scroll"></i>
+            </div>
+            <div class="absolute top-4 left-4">
+              <span class="text-[11px] font-mono font-bold uppercase px-3 py-1 rounded-full bg-pink-500/20 text-pink-300 border border-pink-500/30 backdrop-blur-md">Summit</span>
+            </div>
+            <div class="absolute top-4 right-4">
+              <span class="text-[11px] font-mono text-slate-300 px-2.5 py-1 rounded-full bg-black/40 border border-white/10 backdrop-blur-md">May 10, 2026</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white font-display group-hover:text-pink-300 transition-colors">Annual AI Research Summit</h3>
+            <p class="text-slate-400 text-sm mt-2 leading-relaxed">
+              Showcasing student-authored research papers, keynotes by visiting researchers, and project demos.
+            </p>
+            <div class="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+              <span class="text-xs text-slate-400"><i class="fas fa-microphone text-pink-400 mr-1.5"></i> Auditorium</span>
+              <a href="#contact" class="text-xs font-bold text-pink-400 hover:text-pink-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span>Attend</span> <i class="fas fa-arrow-right text-[10px]"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#contact" class="btn-secondary px-8 py-3 rounded-full text-xs font-bold uppercase tracking-wider inline-flex items-center gap-2">
+          <span>Propose a Workshop or Speaker Session</span>
+          <i class="fas fa-paper-plane text-[10px]"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS SECTION ===== -->
+  <section id="projects" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06] bg-[#070818]/60">
+    <div class="container mx-auto max-w-6xl">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="section-tag mb-3">Open Source &amp; Research</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
+            What We <span class="text-gradient-violet">Build</span>
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base mt-2">Engineered with precision. Backed by science.</p>
+        </div>
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-xs font-mono text-purple-400 hover:text-purple-300 flex items-center gap-2">
+          <i class="fab fa-github text-sm"></i>
+          <span>EXPLORE OUR GITHUB ORG →</span>
+        </a>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Project 1 -->
+        <div class="spotlight-card p-6 rounded-3xl relative flex flex-col justify-between group">
+          <div>
+            <div class="h-40 rounded-2xl bg-gradient-to-br from-purple-900/40 to-slate-900/80 border border-white/[0.08] relative overflow-hidden flex items-center justify-center p-4 mb-5">
+              <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+              <div class="text-center relative z-10">
+                <i class="fas fa-eye text-4xl text-purple-400 mb-2"></i>
+                <div class="text-xs font-mono text-purple-300">YOLOv9 + Edge TPU</div>
+              </div>
+            </div>
+            
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white font-display group-hover:text-purple-300 transition-colors">VisionAI Edge</h3>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">Active</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              <span class="tech-tag text-[10px]">PyTorch</span>
+              <span class="tech-tag text-[10px]">OpenCV</span>
+              <span class="tech-tag text-[10px]">ONNX</span>
+            </div>
+
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Ultra-low latency real-time object detection and segmentation engineered for edge autonomous robotics systems.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+            <a href="#" class="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 font-mono">
+              <i class="fab fa-github text-purple-400"></i> View Code
+            </a>
+            <span class="text-xs text-slate-500 font-mono"><i class="fas fa-star text-yellow-500/80 mr-1"></i> 142</span>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="spotlight-card p-6 rounded-3xl relative flex flex-col justify-between group">
+          <div>
+            <div class="h-40 rounded-2xl bg-gradient-to-br from-pink-900/40 to-slate-900/80 border border-white/[0.08] relative overflow-hidden flex items-center justify-center p-4 mb-5">
+              <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+              <div class="text-center relative z-10">
+                <i class="fas fa-wand-magic-sparkles text-4xl text-pink-400 mb-2"></i>
+                <div class="text-xs font-mono text-pink-300">Diffusion + LoRA</div>
+              </div>
+            </div>
+            
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white font-display group-hover:text-pink-300 transition-colors">GenArt Studio</h3>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">Deployed</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              <span class="tech-tag text-[10px]">Stable Diffusion</span>
+              <span class="tech-tag text-[10px]">HuggingFace</span>
+              <span class="tech-tag text-[10px]">React</span>
+            </div>
+
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Custom generative AI interface and lightweight latent diffusion models tailored for procedural concept design and UI assets.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+            <a href="#" class="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 font-mono">
+              <i class="fab fa-github text-pink-400"></i> View Code
+            </a>
+            <span class="text-xs text-slate-500 font-mono"><i class="fas fa-star text-yellow-500/80 mr-1"></i> 89</span>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="spotlight-card p-6 rounded-3xl relative flex flex-col justify-between group">
+          <div>
+            <div class="h-40 rounded-2xl bg-gradient-to-br from-cyan-900/40 to-slate-900/80 border border-white/[0.08] relative overflow-hidden flex items-center justify-center p-4 mb-5">
+              <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+              <div class="text-center relative z-10">
+                <i class="fas fa-chart-network text-4xl text-cyan-400 mb-2"></i>
+                <div class="text-xs font-mono text-cyan-300">Predictive ML</div>
+              </div>
+            </div>
+            
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-xl font-bold text-white font-display group-hover:text-cyan-300 transition-colors">PredictHub Agro</h3>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Research</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 my-3">
+              <span class="tech-tag text-[10px]">Scikit-Learn</span>
+              <span class="tech-tag text-[10px]">Pandas</span>
+              <span class="tech-tag text-[10px]">XGBoost</span>
+            </div>
+
+            <p class="text-slate-400 text-sm leading-relaxed">
+              Predictive crop yield and disease detection models leveraging meteorological data and multispectral satellite imagery.
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+            <a href="#" class="text-xs text-slate-300 hover:text-white flex items-center gap-1.5 font-mono">
+              <i class="fab fa-github text-cyan-400"></i> View Code
+            </a>
+            <span class="text-xs text-slate-500 font-mono"><i class="fas fa-star text-yellow-500/80 mr-1"></i> 118</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM / INNOVATORS SECTION ===== -->
+  <section id="team" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06]">
+    <div class="container mx-auto max-w-6xl">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16">
+        <span class="section-tag mb-3">Leadership &amp; Minds</span>
+        <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
+          Meet the <span class="text-gradient">Innovators</span>
+        </h2>
+        <p class="text-slate-400 text-sm md:text-base mt-2">The people driving the vision and engineering the future at ARISE SSGMCE.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Member 1 -->
+        <div class="spotlight-card p-6 rounded-3xl text-center relative group">
+          <div class="relative w-24 h-24 mx-auto mb-4">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-500 p-0.5 animate-shimmer">
+              <div class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-purple-300 font-display">
+                DS
+              </div>
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-white font-display">Dr. A. Sharma</h3>
+          <p class="text-xs font-mono text-purple-400 mt-1">Faculty Coordinator</p>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed">Guiding research methodologies and student mentorship.</p>
+          <div class="flex justify-center gap-3 mt-4 text-slate-400">
+            <a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-purple-400 hover:border-purple-500/40 transition"><i class="fab fa-linkedin-in text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-purple-400 hover:border-purple-500/40 transition"><i class="fab fa-github text-xs"></i></a>
+          </div>
+        </div>
+
+        <!-- Member 2 -->
+        <div class="spotlight-card p-6 rounded-3xl text-center relative group">
+          <div class="relative w-24 h-24 mx-auto mb-4">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500 to-blue-600 p-0.5">
+              <div class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-cyan-300 font-display">
+                RK
+              </div>
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-white font-display">Rahul K.</h3>
+          <p class="text-xs font-mono text-cyan-400 mt-1">Core Team Lead</p>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed">Orchestrating club operations, hackathons, and strategy.</p>
+          <div class="flex justify-center gap-3 mt-4 text-slate-400">
+            <a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500/40 transition"><i class="fab fa-linkedin-in text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-cyan-400 hover:border-cyan-500/40 transition"><i class="fab fa-github text-xs"></i></a>
+          </div>
+        </div>
+
+        <!-- Member 3 -->
+        <div class="spotlight-card p-6 rounded-3xl text-center relative group">
+          <div class="relative w-24 h-24 mx-auto mb-4">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-pink-500 to-purple-600 p-0.5">
+              <div class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-pink-300 font-display">
+                PM
+              </div>
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-white font-display">Priya M.</h3>
+          <p class="text-xs font-mono text-pink-400 mt-1">Technical Head</p>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed">Leading deep learning projects and model deployments.</p>
+          <div class="flex justify-center gap-3 mt-4 text-slate-400">
+            <a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-pink-400 hover:border-pink-500/40 transition"><i class="fab fa-linkedin-in text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-pink-400 hover:border-pink-500/40 transition"><i class="fab fa-github text-xs"></i></a>
+          </div>
+        </div>
+
+        <!-- Member 4 -->
+        <div class="spotlight-card p-6 rounded-3xl text-center relative group">
+          <div class="relative w-24 h-24 mx-auto mb-4">
+            <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-600 p-0.5">
+              <div class="w-full h-full rounded-full bg-[#0d0f22] flex items-center justify-center text-2xl font-bold text-indigo-300 font-display">
+                AR
+              </div>
+            </div>
+          </div>
+          <h3 class="text-lg font-bold text-white font-display">Ananya R.</h3>
+          <p class="text-xs font-mono text-indigo-400 mt-1">Design &amp; UX Lead</p>
+          <p class="text-slate-400 text-xs mt-3 leading-relaxed">Designing intuitive human-AI interactions and brand identity.</p>
+          <div class="flex justify-center gap-3 mt-4 text-slate-400">
+            <a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-indigo-400 hover:border-indigo-500/40 transition"><i class="fab fa-linkedin-in text-xs"></i></a>
+            <a href="#" class="w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center hover:text-indigo-400 hover:border-indigo-500/40 transition"><i class="fab fa-github text-xs"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESOURCES SECTION ===== -->
+  <section id="resources" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06] bg-[#070818]/60">
+    <div class="container mx-auto max-w-6xl">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <div>
+          <span class="section-tag mb-3">Knowledge Vault</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
+            Learn With <span class="text-gradient-violet">ARISE</span>
+          </h2>
+          <p class="text-slate-400 text-sm md:text-base mt-2">Curated roadmaps, tutorials, and reading materials to master modern AI.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <div class="spotlight-card p-6 rounded-3xl relative group">
+          <div class="icon-box-glow mb-4">
+            <i class="fas fa-map-signs"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white font-display mb-1">AI Roadmaps</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">Step-by-step guides from zero coding to training transformer models.</p>
+          <a href="#" class="text-xs font-bold text-purple-400 hover:text-purple-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+            <span>Explore Roadmaps</span> <i class="fas fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <div class="spotlight-card p-6 rounded-3xl relative group">
+          <div class="icon-box-glow mb-4">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white font-display mb-1">ML Fundamentals</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">Linear algebra, calculus, gradient descent, and statistical foundations.</p>
+          <a href="#" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+            <span>Access Notes</span> <i class="fas fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <div class="spotlight-card p-6 rounded-3xl relative group">
+          <div class="icon-box-glow mb-4">
+            <i class="fab fa-python"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white font-display mb-1">Python for AI</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">NumPy, Pandas, PyTorch workflows, vector databases, and APIs.</p>
+          <a href="#" class="text-xs font-bold text-yellow-400 hover:text-yellow-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+            <span>Code Notebooks</span> <i class="fas fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+        <div class="spotlight-card p-6 rounded-3xl relative group">
+          <div class="icon-box-glow mb-4">
+            <i class="fas fa-file-invoice"></i>
+          </div>
+          <h3 class="text-lg font-bold text-white font-display mb-1">Research Papers</h3>
+          <p class="text-slate-400 text-xs leading-relaxed mb-4">Summaries and code reproductions of seminal ML research papers.</p>
+          <a href="#" class="text-xs font-bold text-pink-400 hover:text-pink-300 inline-flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+            <span>Browse Archive</span> <i class="fas fa-arrow-right text-[10px]"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JOIN / CTA SECTION ===== -->
+  <section id="join" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06]">
+    <div class="container mx-auto max-w-5xl">
+      <div class="spotlight-card p-10 md:p-16 rounded-[2.5rem] relative text-center overflow-hidden border border-purple-500/30 bg-gradient-to-b from-purple-950/40 via-[#0b0c20]/90 to-[#06060e]">
+        <div class="absolute inset-0 bg-grid-pattern opacity-30"></div>
+        <div class="relative z-10 max-w-2xl mx-auto">
+          <span class="section-tag mb-4">Join the Tribe</span>
+          <h2 class="text-4xl md:text-6xl font-extrabold text-white font-display tracking-tight mt-2">
+            Ready to Build the <span class="text-gradient">Future?</span>
+          </h2>
+          <p class="text-slate-300 text-base md:text-lg mt-4 leading-relaxed font-light">
+            Whether you are writing your first line of code or deploying complex multi-modal models, there is a place for you in the ARISE collective.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-4 mt-8">
+            <a href="#contact" class="btn-primary px-10 py-4 rounded-full text-base font-bold tracking-wide uppercase shadow-2xl shadow-purple-600/40">
+              Apply to Join ARISE
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-secondary px-8 py-4 rounded-full text-base font-semibold flex items-center gap-2">
+              <i class="fab fa-discord text-indigo-400"></i> Join Community Chat
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact" class="py-24 px-6 md:px-12 relative z-10 border-t border-white/[0.06] bg-[#070818]/60">
+    <div class="container mx-auto max-w-6xl">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        
+        <!-- Contact Info -->
+        <div>
+          <span class="section-tag mb-3">Get in Touch</span>
+          <h2 class="text-3xl md:text-5xl font-extrabold text-white font-display tracking-tight mt-2">
+            Let's <span class="text-gradient-violet">Connect</span>
+          </h2>
+          <p class="text-slate-300 text-base mt-4 leading-relaxed font-light">
+            Have an idea for collaboration, want to mentor, sponsor a hackathon, or join the core team? Reach out to us directly.
+          </p>
+
+          <div class="space-y-4 mt-8 text-sm text-slate-300">
+            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400 font-mono">EMAIL</div>
+                <span class="text-white font-medium">arise.ssgmce@example.com</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="w-10 h-10 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
+                <i class="fab fa-instagram"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400 font-mono">INSTAGRAM</div>
+                <span class="text-white font-medium">@arise_ssgmce</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+                <i class="fab fa-linkedin-in"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400 font-mono">LINKEDIN</div>
+                <span class="text-white font-medium">ARISE SSGMCE</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-white/[0.06]">
+              <div class="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <div class="text-xs text-slate-400 font-mono">CAMPUS</div>
+                <span class="text-white font-medium">SSGMCE, Shegaon, Maharashtra, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="spotlight-card p-8 md:p-10 rounded-3xl relative border border-white/[0.08]">
+          <h3 class="text-2xl font-bold text-white font-display mb-1">Send a Message</h3>
+          <p class="text-slate-400 text-xs mb-6">Fill out the details and our team will get back to you within 24 hours.</p>
+
+          <form id="contact-form" class="space-y-4">
+            <div>
+              <label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Your Name</label>
+              <input type="text" required placeholder="John Doe" class="form-input-glass">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Email Address</label>
+              <input type="email" required placeholder="john@example.com" class="form-input-glass">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Subject</label>
+              <input type="text" required placeholder="Project Collaboration / Membership" class="form-input-glass">
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono text-slate-400 uppercase tracking-wider mb-1.5">Message</label>
+              <textarea rows="3" required placeholder="Tell us how you'd like to get involved..." class="form-input-glass resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary w-full py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider mt-2">
+              Send Message
+            </button>
+          </form>
+
+          <div id="form-success" class="hidden mt-4 p-4 rounded-xl bg-green-500/10 border border-green-500/30 text-green-400 text-sm text-center">
+            <i class="fas fa-check-circle mr-2"></i> Thank you! Your message has been sent successfully.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="py-14 px-6 md:px-12 relative z-10 border-t border-white/[0.08] bg-[#04050b] text-slate-400 text-sm">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+            </svg>
+          </div>
+          <div>
+            <span class="text-lg font-bold text-white font-display">ARISE <span class="text-purple-400">SSGMCE</span></span>
+            <p class="text-xs text-slate-400">Research. Build. Deploy. Impact.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6 text-xs font-medium">
+          <a href="#home" class="hover:text-purple-400 transition">Home</a>
+          <a href="#what-we-do" class="hover:text-purple-400 transition">What We Do</a>
+          <a href="#about" class="hover:text-purple-400 transition">About</a>
+          <a href="#events" class="hover:text-purple-400 transition">Events</a>
+          <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
+          <a href="#team" class="hover:text-purple-400 transition">Team</a>
+          <a href="#resources" class="hover:text-purple-400 transition">Resources</a>
+          <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-4 text-base text-slate-400">
+          <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-github"></i></a>
+          <a href="#" class="hover:text-purple-400 transition"><i class="fab fa-discord"></i></a>
+        </div>
+
+      </div>
+
+      <div class="mt-8 pt-6 border-t border-white/[0.04] text-center text-xs text-slate-500">
+        © 2026 ARISE SSGMCE. All Rights Reserved. Built with curiosity &amp; innovation by the ARISE AI Collective.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="aries.js"></script>
+</body>
+</html>
