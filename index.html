@@ -25,59 +25,59 @@
   <div class="ambient-glow ambient-cyan"></div>
   <div class="ambient-glow ambient-pink"></div>
 
-  <!-- ===== FLOATING NAVBAR ===== -->
-   <header id="navbar-container" class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 bg-transparent">
-    <nav id="navbar"
-      class="w-full max-w-6xl py-3.5 px-6 rounded-2xl flex items-center justify-between transition-all duration-300 border border-white/[0.08] bg-[#090b1d]/75 backdrop-blur-xl shadow-2xl shadow-purple-950/20">
+  <!-- ===== FULL WIDTH FLOATING NAVBAR ===== -->
+<header id="navbar-container" class="fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 bg-transparent">
+  <nav id="navbar"
+    class="w-full py-3.5 px-4 md:px-8 flex items-center justify-between transition-all duration-300 border-b border-white/[0.06] bg-[#090b1d]/75 backdrop-blur-xl shadow-2xl shadow-purple-950/20">
 
-      <!-- Brand Logo -->
-      <a href="#home" class="flex items-center gap-3 group">
-        <div
-          class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-purple-600/30 group-hover:scale-105 transition-transform">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
-          </svg>
+    <!-- Brand Logo -->
+    <a href="#home" class="flex items-center gap-3 group flex-shrink-0">
+      <div
+        class="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-purple-600/30 group-hover:scale-105 transition-transform">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
+        </svg>
+      </div>
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <span class="text-xl font-extrabold tracking-wider text-white font-display">ARISE</span>
+          <span
+            class="text-[10px] font-bold font-mono uppercase px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">SSGMCE</span>
         </div>
-        <div class="flex flex-col">
-          <div class="flex items-center gap-1.5">
-            <span class="text-xl font-extrabold tracking-wider text-white font-display">ARISE</span>
-            <span
-              class="text-[10px] font-bold font-mono uppercase px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">SSGMCE</span>
-          </div>
-          <span class="text-[10px] text-slate-400 tracking-widest uppercase -mt-0.5 font-semibold">AI Collective</span>
-        </div>
+        <span class="text-[10px] text-slate-400 tracking-widest uppercase -mt-0.5 font-semibold">AI Collective</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
+      <a href="#home" class="nav-link hover:text-white transition-colors">Home</a>
+      <a href="#what-we-do" class="nav-link hover:text-white transition-colors">What We Do</a>
+      <a href="#about" class="nav-link hover:text-white transition-colors">About</a>
+      <a href="#events" class="nav-link hover:text-white transition-colors">Events</a>
+      <a href="#projects" class="nav-link hover:text-white transition-colors">Projects</a>
+      <a href="#team" class="nav-link hover:text-white transition-colors">Team</a>
+      <a href="#resources" class="nav-link hover:text-white transition-colors">Resources</a>
+      <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
+    </div>
+
+    <!-- Action Button -->
+    <div class="hidden md:flex items-center gap-3">
+      <a href="#join"
+        class="btn-primary px-5 py-2 rounded-full text-xs font-bold tracking-wide uppercase flex items-center gap-2">
+        <span>Join ARISE</span>
+        <i class="fas fa-arrow-right text-[10px]"></i>
       </a>
+    </div>
 
-      <!-- Desktop Nav Links -->
-      <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#home" class="nav-link hover:text-white transition-colors">Home</a>
-        <a href="#what-we-do" class="nav-link hover:text-white transition-colors">What We Do</a>
-        <a href="#about" class="nav-link hover:text-white transition-colors">About</a>
-        <a href="#events" class="nav-link hover:text-white transition-colors">Events</a>
-        <a href="#projects" class="nav-link hover:text-white transition-colors">Projects</a>
-        <a href="#team" class="nav-link hover:text-white transition-colors">Team</a>
-        <a href="#resources" class="nav-link hover:text-white transition-colors">Resources</a>
-        <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
-      </div>
-
-      <!-- Action Button -->
-      <div class="hidden md:flex items-center gap-3">
-        <a href="#join"
-          class="btn-primary px-5 py-2 rounded-full text-xs font-bold tracking-wide uppercase flex items-center gap-2">
-          <span>Join ARISE</span>
-          <i class="fas fa-arrow-right text-[10px]"></i>
-        </a>
-      </div>
-
-      <!-- Mobile Hamburger Button -->
-      <button id="hamburger" class="lg:hidden text-slate-300 hover:text-white text-xl p-2 focus:outline-none"
-        aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
-      </button>
-    </nav>
-  </header>
+    <!-- Mobile Hamburger Button -->
+    <button id="hamburger" class="lg:hidden text-slate-300 hover:text-white text-xl p-2 focus:outline-none"
+      aria-label="Toggle navigation">
+      <i class="fas fa-bars"></i>
+    </button>
+  </nav>
+</header>
 
   <!-- ===== MOBILE MENU DRAWER ===== -->
   <div id="mobile-menu"
